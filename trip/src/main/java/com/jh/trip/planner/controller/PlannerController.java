@@ -22,16 +22,16 @@ public class PlannerController {
 	}
 	
 	
-	// 플랜 요청 내역 페이지
-	@RequestMapping("/myRequest/{id}")
-	public ModelAndView planInquiry(ModelAndView mv, @PathVariable String id) {
-		
-		Member m = mservice.selectMember(id);
-		
-		mv.addObject("member", m);
-		mv.setViewName("request/myRequest");
-		
-		return mv;
-	}
+//	// 플랜 요청 내역 페이지
+//	@RequestMapping("/myRequest/{id}")
+//	public ModelAndView planInquiry(ModelAndView mv, @PathVariable String id) {
+//		
+//		Member m = mservice.selectMember(id);
+//		
+//		mv.addObject("member", m);
+//		mv.setViewName("request/myRequest");
+//		
+//		return mv;
+//	}
 
 }

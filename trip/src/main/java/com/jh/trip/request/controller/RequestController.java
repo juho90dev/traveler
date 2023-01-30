@@ -1,10 +1,15 @@
 package com.jh.trip.request.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jh.trip.member.model.service.MemberService;
@@ -69,8 +74,23 @@ public class RequestController {
 	}
 	
 	
-	
-	// 내 플랜 요청 리스트
-	
+	// 플랜 요청 내역 페이지
+	@RequestMapping("/myRequest/{id}")
+	public ModelAndView planInquiry(@RequestParam(defaultValue="1") int cPage,
+			@RequestParam(defaultValue="5") int numPerpage, ModelAndView mv, @PathVariable String id) {
+		
+		// Member m = mservice.selectMember(id);
+		List<Request> request = new ArrayList();
+		int totalData = 0;
+		Map param = Map.of("cPage", cPage, "numPerpage", numPerpage);
+		request = rservice.selectRequestList(param, id);
+		totalData = rservice.requestCount(id);
+		
+		
+		mv.addObject("request", request);
+		mv.setViewName("request/myRequest");
+		
+		return mv;
+	}
 
 }

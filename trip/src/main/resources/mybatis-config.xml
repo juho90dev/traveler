@@ -10,6 +10,7 @@
 		<typeAlias type="com.jh.trip.notice.model.vo.Notice" alias="notice"/>
 		<typeAlias type="com.jh.trip.inquiry.model.vo.Inquiry" alias="inquiry"/>
 		<typeAlias type="com.jh.trip.inquiry.model.vo.ReplyInquiry" alias="replyinquiry"/>
+		<typeAlias type="com.jh.trip.request.model.vo.Request" alias="request"/>
 	</typeAliases>
 
 

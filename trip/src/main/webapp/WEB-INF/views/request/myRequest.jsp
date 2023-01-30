@@ -32,7 +32,7 @@
 					  <caption>표 제목</caption>
 					  <tr>
 					  <th>주문번호</th>
-					  <th>신청인아이디</th>
+					  <th>플래너아이디</th>
 					  <th>여행시작일</th>
 					  <th>여행종료일</th>
 					  <th>교통수단</th>
