@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="member">
+	<resultMap id="memberMap" type="member">
+		<id column="userId" property="userId"/>
+		<result column="avgscore" property="avgscore"/>
+		<result column="city" property="city"/>
+		<result column="country" property="country"/>
+		<result column="email" property="email"/>
+		<result column="grade" property="grade"/>
+		<result column="image" property="image"/>
+		<result column="introduce" property="introduce"/>
+		<result column="password" property="password"/>
+		<result column="phone" property="phone"/>
+		<result column="enroll_Date" property="enrollDate"/>
+	</resultMap>
+	
+	
+	<update id="updateMember" parameterType="Member">
+   		UPDATE MEMBER SET EMAIL=#{email}, PHONE=#{phone}, IMAGE=#{image}, 
+   		CITY=#{city}, COUNTRY=#{country}, PASSWORD=#{password}, INTRODUCE=#{introduce} 
+   		WHERE USERID=#{userId}
+	</update>
+
+	<!-- 회원 리스트 -->
+	<select id="memeberList" resultMap="memberMap">
+		SELECT * FROM MEMBER ORDER BY ENROLL_DATE
+	</select>
+	
+	<select id="memberCount" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER
+	</select>
+	
+	<update id="upgrade" parameterType="Member">
+		UPDATE MEMBER SET GRADE=#{grade} WHERE USERID=#{userId}
+	</update>
+	
+	<!-- 일반 회원 리스트 -->
+	<select id="normalMember" resultMap="memberMap">
+		SELECT * FROM MEMBER WHERE GRADE=#{grade}
+	</select>
+	<select id="normalmemberCount" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE GRADE=#{grade}
+	</select>
+	
+	<!-- 플래너 회원 리스트 -->
+	<select id="plannerMember" resultMap="memberMap">
+		SELECT * FROM MEMBER WHERE GRADE=#{grade}
+	</select>
+	<select id="plannermemberCount" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE GRADE=#{grade}
+	</select>
+	
+	<!-- 대도시로 검색 -->
+	<select id="searchMemberCity" resultMap="memberMap">
+		SELECT * FROM MEMBER WHERE CITY LIKE '%'||#{keyword}||'%'
+	</select>
+	<select id="searchMemberCityCount" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE CITY LIKE '%'||#{keyword}||'%'
+	</select>
+	
+	<!-- 소도시로 검색 -->
+	<select id="searchMemberCountry" resultMap="memberMap">
+		SELECT * FROM MEMBER WHERE COUNTRY LIKE '%'||#{keyword}||'%'
+	</select>
+	<select id="searchMemberCountryCount" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE COUNTRY LIKE '%'||#{keyword}||'%'
+	</select>
+	
+	<!-- 이메일로 검색 -->
+	<select id="searchMemberEmail" resultMap="memberMap">
+		SELECT * FROM MEMBER WHERE EMAIL LIKE '%'||#{keyword}||'%'
+	</select>
+	<select id="searchMemberEmailCount" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE EMAIL LIKE '%'||#{keyword}||'%'
+	</select>
+	
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="notice">
+	
+	<resultMap id="noticeMap" type="notice">
+		<id column="noti_no" property="notiNo"/>
+		<result column="writer" property="writer"/>
+		<result column="notice_title" property="noticeTitle"/>
+		<result column="notice_content" property="noticeContent"/>
+		<result column="original_File_Name" property="originalFileName"/>
+		<result column="rename_File_Name" property="renameFileName"/>
+		<result column="noti_Date" property="notiDate"/>
+	</resultMap>
+	
+	
+	
+	
+	<!-- 공지사항 리스트  -->
+	<select id="selectNotice" resultMap="noticeMap">
+		SELECT * FROM NOTICE ORDER BY NOTI_NO DESC
+	</select>
+	
+	<select id="selectNoticeCount" resultType="_int">
+		SELECT COUNT(*) FROM NOTICE
+	</select>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="deleteNotice" parameterType="Notice">
+		DELETE FROM NOTICE WHERE NOTI_NO=#{notiNo}
+	</delete>
+	
+	<!-- 공지사항 수정 -->
+	<update id="updateNotice" parameterType="Notice">
+		UPDATE NOTICE SET NOTICE_TITLE =#{noticeTitle} , NOTICE_CONTENT=#{noticeContent},
+		ORIGINAL_FILE_NAME=#{originalFileName}, RENAME_FILE_NAME=#{renameFileName}
+		WHERE NOTI_NO=#{notiNo}
+	</update>
+
+</mapper>

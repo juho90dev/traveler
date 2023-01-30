@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="inquiry">
+
+	<resultMap id="inquiryMap" type="inquiry">
+		<id column="inquiry_No" property="inquiryNo"/>
+		<result column="inquiry_title" property="inquiryTitle"/>
+		<result column="inquiry_content" property="inquiryContent"/>
+		<result column="inquiry_email" property="inquiryEmail"/>
+		<result column="inquiry_date" property="inquiryDate"/>
+		<result column="inquiry_phone" property="inquiryPhone"/>
+		<result column="inquiry_type" property="inquiryType"/>
+		<association property="writer" javaType="Member">
+			<result column="user_id" property="userId"/>
+		</association>
+		<association property="reInquiry" javaType="ReplyInquiry">
+			<result column="reinquiry_No" property="reinquiryNo"/>
+			<result column="writer" property="writer"/>
+			<result column="reinquiry_Title" property="reinquiryTitle"/>
+			<result column="reinquiry_Content" property="reinquiryContent"/>
+			<result column="reinquiry_Date" property="reinquiryDate"/>
+		</association>
+	</resultMap>
+	
+	<select id="selectInquiryList" resultMap="inquiryMap">
+		SELECT * FROM INQUIRY I LEFT JOIN REPLY_INQUIRY R ON I.INQUIRY_NO=R.INQUIRY_NO ORDER BY I.INQUIRY_NO DESC
+	</select>
+	
+	<select id="selectInquiryCount" resultType="_int">
+		SELECT COUNT(*) FROM INQUIRY
+	</select>
+</mapper>
