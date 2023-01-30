@@ -19,13 +19,13 @@ public class PlanInquiryController {
 	
 	
 	// 플랜 요청 내역 페이지
-	@RequestMapping("/requestPlanList/{id}")
+	@RequestMapping("/myRequest/{id}")
 	public ModelAndView planInquiry(ModelAndView mv, @PathVariable String id) {
 		
 		Member m = mservice.selectMember(id);
 		
 		mv.addObject("member", m);
-		mv.setViewName("plannerMember/requestPlanList");
+		mv.setViewName("request/myRequest");
 		
 		return mv;
 	}

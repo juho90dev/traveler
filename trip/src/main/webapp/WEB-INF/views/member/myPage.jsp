@@ -74,7 +74,7 @@
 			                  <li><a href="${path }/myPage1">내 정보 수정 </a></li>
 			                  <li><a href="/">내 신고 내역</a></li>
 			                  <li><a href="/">내 문의 내역</a></li>
-			                  <li><a href="/requestPlanList/${loginMember.userId}">내 플랜 요청 내역</a></li>
+			                  <li><a href="/myRequest/${loginMember.userId}">내 플랜 요청 내역</a></li>
 			                </ul>
 						</div><!-- End sidebar categories-->
 				</div><!-- End sidebar recent posts-->

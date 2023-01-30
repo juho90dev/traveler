@@ -17,7 +17,7 @@
       <div class="container">
         <ol>
           <li><a href="/">Home</a></li>
-          <li><a href="${Path}/requestPlanList/${loginMember.userId}">플랜 요청 내역</a></li>
+          <li><a href="${Path}/myRequest/${loginMember.userId}">플랜 요청 내역</a></li>
         </ol>
       </div>
     </section>
