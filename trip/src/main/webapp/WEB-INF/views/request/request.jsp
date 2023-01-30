@@ -94,7 +94,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12 text-right">
-								<button type="submit" class="btn btn-primary">등록</button>
+								<button onclick="requestAlert();" type="submit" class="btn btn-primary">등록</button>
 								<button type="reset" class="btn btn-primary">재설정</button>
 								<button type="button" class="btn btn-primary"
 									onclick="location.assign('${pageContext.request.contextPath }/memberPage/${member.userId}')">취소</button>
@@ -151,7 +151,9 @@
 		$("#trans3").val("");
 		$("#trans4").val("");
 	}
-
+	const requestAlert=()=>{
+		alert("요청이 완료되었습니다!");
+	}
     
 </script>
 <style>
