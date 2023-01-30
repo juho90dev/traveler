@@ -8,6 +8,6 @@ import com.jh.trip.request.model.vo.Request;
 @Repository
 public interface RequestDao extends JpaRepository<Request, String>{
 	
-	Request save();
+	Request save(Request r);
 
 }

@@ -31,7 +31,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="id">신청자 ID</label> 
-									<input name="userId" id="userId" type="text" value="<c:out value="${loginMember.userId }"/>" readonly class="form-control">
+									<input name="memberId" id="memberId" type="text" value="<c:out value="${loginMember.userId }"/>" readonly class="form-control">
 								</div>
 							</div>
 							<div class="col-md-6">

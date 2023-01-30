@@ -10,7 +10,7 @@ public interface RequestService {
 	List<Request> selectRequestList();
 	
 	// 플랜 요청 작성
-	Request insertRequest();
+	Request insertRequest(Request r);
 	
 	// 플랜 요청서 상세 정보
 	Request infoRequest();

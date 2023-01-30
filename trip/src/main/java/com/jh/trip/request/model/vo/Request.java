@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -49,7 +50,7 @@ public class Request {
 	private Date reqDate;  // 요청일
 	
 	
-	
+	@PrePersist
 	public void prepersist() {
 		this.approval=this.approval==null?"N":this.approval;
 		this.reqDate=this.reqDate==null?new Date():this.reqDate;

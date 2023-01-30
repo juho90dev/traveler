@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jh.trip.member.model.service.MemberService;
 import com.jh.trip.member.model.vo.Member;
+import com.jh.trip.request.model.service.RequestService;
+import com.jh.trip.request.model.vo.Request;
 
 @Controller
 public class RequestController {
@@ -16,7 +18,8 @@ public class RequestController {
 	@Autowired
 	private MemberService mservice;
 	
-	
+	@Autowired
+	private RequestService rservice;
 	
 	// 플랜 요청 페이지
 	@RequestMapping("/request/{id}")
@@ -31,13 +34,12 @@ public class RequestController {
 	}
 	
 	// 플랜 요청 작성
-	
 	@RequestMapping("/insertRequest")
-	public ModelAndView insertRequest(ModelAndView mv, @RequestParam String userId, @RequestParam String plannerId,
+	public ModelAndView insertRequest(ModelAndView mv, @RequestParam String memberId, @RequestParam String plannerId,
 			@RequestParam String requestTitle, @RequestParam String requestContent, @RequestParam String startDay,
 			@RequestParam String endDay, @RequestParam String transport, @RequestParam String theme) {
 		
-		System.out.println(userId);
+		System.out.println(memberId);
 		System.out.println(plannerId);
 		System.out.println(requestTitle);
 		System.out.println(requestContent);
@@ -46,7 +48,29 @@ public class RequestController {
 		System.out.println(theme);
 		System.out.println(transport);
 		
+		Request r = Request.builder().memberId(memberId).plannerId(plannerId).requestTitle(requestTitle).requestContent(requestContent).
+				startDay(startDay).endDay(endDay).theme(theme).transport(transport).build();
+		
+		
+		String msg="";
+		String loc="";
+		try {
+			Request req = rservice.insertRequest(r);
+			mv.addObject("msg", "요청글 작성 완료!");
+			mv.addObject("loc","/myRequest/"+memberId);
+		}catch(Exception e) {
+			mv.addObject("msg", "요청글 작성 완료!");
+			mv.addObject("loc","request/request");
+		}
+		
+		mv.setViewName("common/msg");
 		return mv;
+
 	}
+	
+	
+	
+	// 내 플랜 요청 리스트
+	
 
 }
