@@ -74,7 +74,7 @@
 				<c:if test="${loginMember.userId ne null}">
 					<li class="dropdown"><a href="/"><span>${loginMember.userId }님</span> <i class="bi bi-chevron-down"></i></a>
 						<ul>
-							<li><a href="${path }/myPage1">마이 페이지</a></li>
+							<li><a href="${path }/myPage">마이 페이지</a></li>
 							<c:if test="${loginMember.userId eq 'admin'}">
 								<li><a href="${path}/memberList">회원 명단</a></li>
 							</c:if>

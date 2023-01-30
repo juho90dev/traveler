@@ -20,7 +20,7 @@
 				<a href="/">Home</a>
 			</li>
 	        <li>
-	        	<a href="${Path}/mypage">마이 페이지</a>
+	        	<a href="${Path}/myPage">마이 페이지</a>
 	        </li>
         </ol>
     </div>
@@ -34,12 +34,16 @@
 				<div class="p-4">
           				<c:if test="${loginMember.image eq null}">
 							<div class="img-circle text-center mb-3">
-								<img src="resources/img/logo1.jpeg" alt="Image" class="shadow">
+								<a href="${path }/memberPage/${loginMember.userId}">
+									<img src="resources/img/logo1.jpeg" alt="Image" class="shadow">
+								</a>
 							</div>
 						</c:if>
         				<c:if test="${loginMember.image ne null}">
 	        				<div class="img-circle text-center mb-3">
+	        				<a href="${path }/memberPage/${loginMember.userId}">
 	        					<img src="${path }/resources/upload/profile/${loginMember.image}" alt="Image" class="shadow">
+	        					</a>
 	        				</div>
         				 </c:if>
 					<h4 class="text-center">${loginMember.userId }</h4>
@@ -49,10 +53,10 @@
 						내 정보
 					</a>
 					<a class="nav-link" id="security-tab" data-toggle="pill" href="#security" role="tab" aria-controls="security" aria-selected="false">
-						신고글
+						신고
 					</a>
 					<a class="nav-link" id="application-tab" data-toggle="pill" href="#application" role="tab" aria-controls="application" aria-selected="false">
-						문의글
+						문의
 					</a>
 				</div>
 			</div>
@@ -171,25 +175,23 @@
 				<div class="p-4">
           				<c:if test="${loginMember.image eq null}">
 							<div class="img-circle text-center mb-3">
+							<a href="${path }/memberPage/${loginMember.userId}">
 								<img src="resources/img/logo1.jpeg" alt="Image" class="shadow">
+								</a>
 							</div>
 						</c:if>
         				<c:if test="${loginMember.image ne null}">
 	        				<div class="img-circle text-center mb-3">
+	        				<a href="${path }/memberPage/${loginMember.userId}">
 	        					<img src="${path }/resources/upload/profile/${loginMember.image}" alt="Image" class="shadow">
+	        					</a>
 	        				</div>
         				 </c:if>
 					<h4 class="text-center">${loginMember.userId }</h4>
 				</div>
 				<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 					<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
-						내 정보
-					</a>
-					<a class="nav-link" id="security-tab" data-toggle="pill" href="#security" role="tab" aria-controls="security" aria-selected="false">
-						신고글
-					</a>
-					<a class="nav-link" id="application-tab" data-toggle="pill" href="#application" role="tab" aria-controls="application" aria-selected="false">
-						문의글
+						내 정보 수정
 					</a>
 					<a class="nav-link" id="notification-tab" data-toggle="pill" href="#notification" role="tab" aria-controls="notification" aria-selected="false">
 						탈퇴
@@ -255,28 +257,8 @@
 	                    	<button type="button" class="btn btn-primary" onclick="location.assign('${pageContext.request.contextPath }/')">취소</button>
 						</div>
 					</form>
-				</div>
-				<div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
-					<section id="board-container" class="container">
-				        <table id="tbl-board" class="table table-striped table-hover">
-				            <tr>
-				                <th>번호</th>
-				                <th>제목</th>
-				                <th>신고한 아이디</th>
-				                <th>신고당한 아이디</th>
-				                <th>작성일</th>
-				            </tr>
-				            <tr>
-					        	<td>1</td>
-								<td>폭력당했어요!!</td>
-								<td>${loginMember.userId}</td>
-								<td>엄석대</td>	
-								<td>2022.12.12</td>
-				            </tr>
-				        </table> 
-					</section>
-				</div>
-				<div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
+				</div> 
+			<%--<div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
 					<section id="board-container" class="container">
 				        <table id="tbl-board" class="table table-striped table-hover">
 				            <tr>
@@ -299,7 +281,7 @@
 				            </tr>
 				        </table> 
 					</section>
-					</div>
+					</div> --%>
 					<div class="tab-pane fade" id="notification" role="tabpanel" aria-labelledby="notification-tab">
 						<h3 class="mb-4">계정 탈퇴</h3>
 						<div class="col-md-6">

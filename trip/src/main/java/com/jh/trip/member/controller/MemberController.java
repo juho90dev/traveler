@@ -140,8 +140,14 @@ public class MemberController {
 	
 
 	// 마이 페이지
-	@RequestMapping(value="/myPage1", method=RequestMethod.GET)
+	@RequestMapping(value="/myPage", method=RequestMethod.GET)
 	public String mypagetest() {
+		return "member/myPage";
+	}
+	
+	// 내 정보 수정 페이지
+	@RequestMapping(value="/myPage1", method=RequestMethod.GET)
+	public String mypage() {
 		return "member/myPage1";
 	}
 	
@@ -152,11 +158,12 @@ public class MemberController {
 		return "common/contact";
 	}
 	
-	// 내 정보 수정페이지
-	@RequestMapping(value="/infoChange", method = RequestMethod.GET)
-	public String infoChange() {
-		return "member/infoChange";
-	}
+	/*
+	 * // 내 정보 수정페이지
+	 * 
+	 * @RequestMapping(value="/infoChange", method = RequestMethod.GET) public
+	 * String infoChange() { return "member/infoChange"; }
+	 */
 	
 	// 정보 수정
 	@RequestMapping("/updateInfo")

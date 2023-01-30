@@ -18,7 +18,7 @@
  	<div class="container">
 		<ol>
 			<li><a href="/">Home</a></li>
-			<li><a href="${path }/memberPage/${member.userId}"">${member.userId }</a></li>
+			<li><a href="${path }/myPage">${loginMember.userId }</a></li>
 		</ol>
 	</div>
 </section><!-- End Breadcrumbs -->
@@ -32,10 +32,10 @@
 					<div class="container">
 						<div class="box1">
 							<div class="box2">
-								<h3>${member.userId}</h3>
+								<h3>${loginMember.userId}</h3>
 								<br>
 								<div class="image">
-									<img src="${path }/resources/upload/profile/${member.image }" width='300' height='300' alt="" class="profile" >
+									<img src="${path }/resources/upload/profile/${loginMember.image }" width='300' height='300' alt="" class="profile" >
 					 				<!-- <img class="image" src="잠만보.jpeg" width='300' height='300'>  -->
 								</div>
 								<br>
@@ -44,22 +44,22 @@
 								<hr>
 								<h4>자기소개</h4>
 								<br>
-								${member.introduce }
+								${loginMember.introduce }
 								<hr>
 								<br>
 								<h4>관심지역</h4>
 								<br>
-								${member.city }
+								${loginMember.city }
 								<hr>
 								<br>
 								<h4>등급</h4>
 								<br>
-								${member.grade }
+								${loginMember.grade }
 								<hr>
 								<br>
 								<h4>가입일</h4>
 								<br>
-								${member.enrollDate }
+								${loginMember.enrollDate }
 								<hr>
 							</div>
 						</div>
@@ -68,14 +68,15 @@
 			</div><!-- End blog entries list -->
 			<div class="col-lg-4">
 				<div class="sidebar">
-					<h3 class="sidebar-title">Categories</h3>
-					<div class="sidebar-item categories">
-		                <ul>
-		                  <li><a href="${path }/planList">${member.userId }님의 플랜 </a></li>
-		                  <li><a href="/request/${member.userId}">${member.userId }님에게 플랜 요청하기</a></li>
-		                  <li><a href="#">${member.userId }님을 신고하기 <span>(8)</span></a></li>
-		                </ul>
-					</div><!-- End sidebar categories-->
+					<h3 class="sidebar-title">내 정보</h3>
+						<div class="sidebar-item categories">
+			                <ul>
+			                  <li><a href="${path }/myPage1">내 정보 수정 </a></li>
+			                  <li><a href="/">내 신고 내역</a></li>
+			                  <li><a href="/">내 문의 내역</a></li>
+			                  <li><a href="/requestPlanList/${loginMember.userId}">내 플랜 요청 내역</a></li>
+			                </ul>
+						</div><!-- End sidebar categories-->
 				</div><!-- End sidebar recent posts-->
 			</div><!-- End sidebar -->
 		</div><!-- End blog sidebar -->
