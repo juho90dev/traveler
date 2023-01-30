@@ -18,7 +18,7 @@
  	<div class="container">
 		<ol>
 			<li><a href="/">Home</a></li>
-			<li><a href="${path }/memberPage/${member.userId}"">${member.userId }</a></li>
+			<li><a href="${path }/memberPage/${member.userId}">${member.userId }</a></li>
 		</ol>
 	</div>
 </section><!-- End Breadcrumbs -->
