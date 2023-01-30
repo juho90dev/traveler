@@ -151,10 +151,7 @@
 		$("#trans3").val("");
 		$("#trans4").val("");
 	}
-	const requestAlert=()=>{
-		alert("요청이 완료되었습니다!");
-	}
-    
+
 </script>
 <style>
 body {
