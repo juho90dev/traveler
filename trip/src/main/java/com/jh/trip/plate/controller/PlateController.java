@@ -1,14 +1,23 @@
 package com.jh.trip.plate.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jh.trip.plate.model.service.PlateService;
 import com.jh.trip.plate.model.vo.Plate;
 
 @Controller
 public class PlateController {
+	
+	
+	@Autowired
+	private PlateService ps;
+	
 	
 	// 장소 검색 페이지
 	@RequestMapping("/plateList")
@@ -679,6 +688,9 @@ public class PlateController {
 				.cat1(cat1).cat2(cat2).build();
 		System.out.println(cat1 +","+ cat2 +","+ areacode +","+ sigungucode);
 		System.out.println(p);
+		
+		List<Plate> l = ps.selectList(p);
+		
 		
 		mv.setViewName("plate/plateList");
 		return mv;
