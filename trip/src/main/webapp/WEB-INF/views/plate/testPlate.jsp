@@ -25,339 +25,60 @@
 <section id="team" class="team">
 	<div class="container">
 		<div id="stitle">
+			<div class="dropdown-label"></div>
 			<div id="search-container">
-				<form id="search" action="${path }/searchResult" method="post">
-					<div class="travel1">
-						<select name="mainTema" id="mainTema" onchange="change(this)">
-							<option value="tematitle">테마 선택</option>
-							<option value="자연">자연</option>
-							<option value="인문">인문(문화/예술/역사)</option>
-							<option value="추천코스">추천코스</option>
-							<option value="레포츠">레포츠</option>
-							<option value="숙박">숙박</option>
-							<option value="쇼핑">쇼핑</option>
-							<option value="음식">음식</option>
-						</select>
-
-						<select name="subTema" id="subTema">
-							<option value="subtematitle">상세테마 선택</option>
-						</select>
-					</div>	
-					<div class="citytravel1">
-						<select name="addressDo" id="addressDo" onchange="addressDochange(this)">
-							<option value="sigun">시/도 선택</option>
-							<option value="서울">서울</option>
-							<option value="인천">인천</option>
-							<option value="경기도">경기도</option>
-							<option value="강원도">강원도</option>
-							<option value="충청북도">충청북도</option>
-							<option value="충청남도">충청남도</option>
-							<option value="대전">대전</option>
-							<option value="세종">세종</option>
-							<option value="경상북도">경상북도</option>
-							<option value="경상남도">경상남도</option>
-							<option value="대구">대구</option>
-							<option value="울산">울산</option>
-							<option value="부산">부산</option>
-							<option value="전라북도">전라북도</option>
-							<option value="전라남도">전라남도</option>
-							<option value="광주">광주</option>
-							<option value="제주">제주</option>
-						</select>
-
-						<select name="addressDogun" id="addressDogun">
-							<option value="sigundo">시/군/구</option>
-						</select>
-					</div>
-					<div class="btnTest">
-						<button type="submit">검색</button>
-					</div>
+				<form id="search" action="<%=request.getContextPath()%>/searchResult.do" method="post">
+					<select name="maintema" id="maintema" onchange="change(this)">
+				        <option value="p">p</option>
+				        <option value="h1">h1</option>
+				        <option value="h2">h2</option>
+				        <option value="h3">h3</option>
+				        <option value="span">span</option>
+				    </select>
+				    <select name="" id="selectTag">
+				        <option value="p">p</option>
+				        <option value="h1">h1</option>
+				        <option value="h2">h2</option>
+				        <option value="h3">h3</option>
+				        <option value="span">span</option>
+				    </select>
+				    <select name="" id="selectTag">
+				        <option value="p">p</option>
+				        <option value="h1">h1</option>
+				        <option value="h2">h2</option>
+				        <option value="h3">h3</option>
+				        <option value="span">span</option>
+				    </select>
+				    <select name="" id="selectTag">
+				        <option value="p">p</option>
+				        <option value="h1">h1</option>
+				        <option value="h2">h2</option>
+				        <option value="h3">h3</option>
+				        <option value="span">span</option>
+				    </select>
 				</form>
-				</div>
 			</div>
 		</div>
 	</div>
 </section><!-- End Team Section -->
 <style>
 
-#searresult {
-	display: inline-block;
-	justify-content: center;
-	border: 1px solid black;
-	margin-top: 40px;
-	margin-left: 20px;
-	max-width: 300px;
-	max-height: 300px;
-}
-
-
-.travel1 {
-	display: flex;
-	justify-content: center;
-	width: 300px;
-	height: 50px;
-	float: left;
-}
-
-.citytravel1 {
-	display: flex;
-	justify-content: center;
-
-	width: 300px;
-	height: 50px;
-}
-
-#mainTema {
-	display: flex;
-	width: 100px;
-	height: 30px;
-	margin-top: 10px;
-	margin-right: 20px;
-	margin-left: 10px;
-	text-align: center;
-}
-
-#subTema {
-	display: flex;
-	width: 180px;
-	height: 30px;
-	margin-top: 10px;
-	margin-right: 20px;
-	text-align: center;
-}
-
-#addressDo {
-	display: flex;
-	width: 100px;
-	height: 30px;
-	margin-top: 10px;
-	margin-right: 20px;
-	text-align: center;
-}
-
-#addressDogun {
-	display: flex;
-	width: 100px;
-	height: 30px;
-	margin-top: 10px;
-	margin-right: 20px;
-	text-align: center;
-}
-.btnTest{
-	width: 100px;
-	height: 30px;
-		margin-top: 10px;
-	border-color: #94c045
-}
-
-.nav {
-	display: flex;
-	width: 600px;
-	height: 50px;
-
-}
-
-.nav>#text {
-	display: flex;
-	margin-top: 10px;
-	width: 500px;
-	/* 검색창 사이즈 조절 */
-	height: 30px;
-	font-size: 18px;
-	border: none;
-	border-bottom: 3px solid rgb(93, 182, 93);
-}
-
-#search {
-	display: flex;
-	margin-top: 10px;
-	font-size: 18px;
-	border: none;
-	padding-top : 10px;
-	width: 600px;
-	height: 5px;
-	border-radius: 15px;
-	color: #fff;
-	cursor: pointer;
-}
-
-
-#searchImg {
-	margin-left: 320px;
-	border: 1px solid red;
-	width: 180px;
-	display: inline-block;
-}
-
-.align-left {
-	text-align: left;
-}
-
-.text-ellipsis {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	max-width: 200px;
-}
-
-.tbroot {
-	margin-left: 20%;
-}
-
-.tbroot>table {
-	margin-top: 20px;
-
-	width: 90%;
-	height: auto;
-	border-radius: 15px;
-	background-color: gray;
-}
-
-.material-symbols-sharp {
-	font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48
-}
-
-.material-symbols-sharp {
-	display: inline-block;
-	margin-left: 20px;
-	margin-top: -5px;
-	font-size: 40px;
-	font-weight: bolder;
-	color: black;
-}
-
-#searchResult {
-	/* border-top: 3px solid gray;   */
-	display: inline-block;
-	border: 1px solid black;
-	width: 100%;
-	height: 700px;
-	margin-top: 20px;
-}
-
-#root {
-	/* border-top: 3px solid gray;   */
-	
-	width: 100%;
-	height: 500px;
-	margin-top: 20px;
-}
-
-h1 {
-	display: inline-block;
-	padding-left: 50px;
-	padding-top: -30px;
-	font-size: 30px;
-}
-
-#place {
-	display: flex;
-	justify-content: center;
-	margin-top: 30px;
-}
-
-.field {
-	display: inline-block;
-	text-align: center;
-	background-color: whitesmoke;
-	width: 600px;
-	height: 100px;
-	border-radius: 15px;
-}
-
-#korea {
-	display: inline-block;
-	margin-right: 50px;
-	border: 1px solid blue;
-}
-
-.dropdown-label {
-	
-	width: 100px;
-	height: 60px;
-	font-size: 40px;
-	margin: 10px;
-	font-weight: bold;
-	color: rgb(50, 50, 50);
-	margin-top: 20px;
-	margin-right: 10px;
-	margin-left: 80px;
-	float: left;
-}
-
-.dropdown-label1 {
-	font-size: 40px;
-	margin: 10px;
-	font-weight: bold;
-	color: rgb(50, 50, 50);
-	margin-top: 20px;
-	margin-right: 70px;
-	padding-left: 80px;
-}
-
-.dropdown {
-	display: inline-block;
-	float: left;
-}
-
-.dropbtn_icon {
-	font-family: 'Material Icons';
-}
-
-.dropbtn {
-	display: block;
-	border: 2px solid rgb(94, 94, 94);
-	border-radius: 4px;
-	background-color: #fcfcfc;
-	font-weight: 400;
-	color: rgb(124, 124, 124);
-	padding: 12px;
-	width: 240px;
-	text-align: left;
-	cursor: pointer;
-	font-size: 12px;
-	z-index: 1;
-	position: relative;
-}
-
-.dropdown-content {
-	display: none;
-	font-weight: 400;
-	background-color: #fcfcfc;
-	width: 240px;
-	border-radius: 8px;
-	height: 80px;
-	overflow: scroll;
-	box-shadow: 0px 0px 10px 3px rgba(190, 190, 190, 0.6);
-}
-
-.dropdown-content::-webkit-scrollbar {
-	width: 5px;
-	height: 10px;
-}
-
-.dropdown-content::-webkit-scrollbar-thumb {
-	border-radius: 2px;
-	background-color: rgb(194, 194, 194)
-}
-
-.dropdown-content div {
-	display: block;
-	text-decoration: none;
-	color: rgb(37, 37, 37);
-	font-size: 12px;
-	padding: 12px 20px;
-}
-
-.dropdown-content div:hover {
-	background-color: rgb(226, 226, 226);
-}
-
-.dropdown-content.show {
-	display: block;
-}
 </style>
 <script>
+jQuery(document).ready(function(){
+
+	    var select = $("select#color");
+
+	    select.change(function(){
+
+   var select_name = $(this).children("option:selected").text();
+
+	        $(this).siblings("label").text(select_name);
+
+	    });
+
+	});
+
     let d;
     // 지역 드롭다운 함수
     function addressDochange(e) {
@@ -428,7 +149,7 @@ h1 {
       const 쇼핑 = ["쇼핑"];
       const 음식 = ["음식점"];
 
-      let target1 = document.getElementById("subTema");
+      let target1 = document.getElementById("subtema");
       
       if (e1.value == "tematitle") d1 = tematitle;
       else if (e1.value == "자연") d1 = 자연;

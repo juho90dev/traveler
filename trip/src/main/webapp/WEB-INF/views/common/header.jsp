@@ -64,7 +64,6 @@
 						<li><a href="${path}/boardList">자유게시판</a></li>
 						<li><a href="${path}/report">신고게시판</a></li>
 						<li><a href="${path}/faq">자주 묻는 질문</a></li>
-						<li><a href="${path}/test">테스트1</a></li>
 					</ul>
 				</li>
 				<c:if test="${loginMember.userId eq null}">
