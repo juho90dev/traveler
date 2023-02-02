@@ -647,7 +647,7 @@ public class PlateController {
 			}
 		} else if (mainTema.equals("레포츠")) {
 			cat1 = "A03";
-			if (subTema.equals("레포츠소개")) {
+			if (subTema.equals("레포츠 소개")) {
 				cat2 = "A0301";
 			} else if (subTema.equals("육상 레포츠")) {
 				cat2 = "A0302";
@@ -660,7 +660,7 @@ public class PlateController {
 			}
 		} else if (mainTema.equals("숙박")) {
 			cat1 = "B02";
-			if (subTema.equals("숙박시설")) {
+			if (subTema.equals("숙박 시설")) {
 				cat2 = "B0201";
 			}
 		} else if (mainTema.equals("쇼핑")) {
