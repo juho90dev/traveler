@@ -6,21 +6,21 @@
 
 
 <section id="breadcrumbs" class="breadcrumbs">
-      <div class="breadcrumb-hero">
-        <div class="container">
-          <div class="breadcrumb-hero">
-            <h2>플랜 요청</h2>
-            <p>여행 계획을 맡겨보세요.</p>
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <ol>
+	<div class="breadcrumb-hero">
+		<div class="container">
+			<div class="breadcrumb-hero">
+	            <h2>플랜 요청</h2>
+	            <p>여행 계획을 맡겨보세요.</p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<ol>
           <li><a href="/">Home</a></li>
           <li><a href="${Path}/request/${loginMember.userId}">플랜 요청</a></li>
         </ol>
-      </div>
-    </section>
+	</div>
+</section>
 <section class="py-5 my-5">
 	<div class="container">
 		<div class="bg-white shadow rounded-lg d-block d-sm-flex">
@@ -100,7 +100,6 @@
 									onclick="location.assign('${pageContext.request.contextPath }/memberPage/${member.userId}')">취소</button>
 							</div>
 						</div>
-						<!-- /.row-->
 					</form>
 				</div>
 			</div>
