@@ -10,7 +10,7 @@ import com.jh.trip.plate.model.vo.Plate;
 @Service
 public class PlateServiceImpl implements PlateService {
 
-	@Override
+	@Override 
 	public List<Plate> selectList(Plate p) {
 		// TODO Auto-generated method stub
 		return null;
