@@ -1,4 +1,4 @@
-package com.jh.trip.plate.model.vo;
+package com.jh.trip.place.model.vo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Plate {
+public class Place {
 
 	@Id
 	private String contentId; // 해당 장소 번호

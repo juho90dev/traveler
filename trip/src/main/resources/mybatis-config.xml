@@ -11,6 +11,7 @@
 		<typeAlias type="com.jh.trip.inquiry.model.vo.Inquiry" alias="inquiry"/>
 		<typeAlias type="com.jh.trip.inquiry.model.vo.ReplyInquiry" alias="replyinquiry"/>
 		<typeAlias type="com.jh.trip.request.model.vo.Request" alias="request"/>
+		<typeAlias type="com.jh.trip.place.model.vo.Place" alias="place"/>
 	</typeAliases>
 
 

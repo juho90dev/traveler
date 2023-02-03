@@ -55,7 +55,7 @@
 	        <ul>
 				<li><a class="active" href="/">Home</a></li>
 				<li><a href="${path}/plannerMember">플랜 크리에이터</a></li>
-				<li><a href="${path}/plateList">장소</a></li>
+				<li><a href="${path}/placeList">장소</a></li>
 				<li><a href="/">플랜</a></li>       
 				<li class="dropdown"><a href="${path}/faq"><span>FAQ</span> <i class="bi bi-chevron-down"></i></a>
 					<ul>
