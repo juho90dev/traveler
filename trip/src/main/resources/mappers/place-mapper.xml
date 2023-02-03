@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="place">
+	<resultMap id="placeMap" type="place">
+		<id column="content_Id" property="contentId"/>
+		<result column="address" property="address"/>
+		<result column="areacode" property="areacode"/>
+		<result column="sigungucode" property="sigungucode"/>
+		<result column="cat1" property="cat1"/>
+		<result column="cat2" property="cat2"/>
+		<result column="contenttype_Id" property="contenttypeId"/>
+		<result column="firstImage" property="firstImage"/>
+		<result column="mapx" property="mapx"/>
+		<result column="mapy" property="mapy"/>
+		<result column="title" property="title"/>
+		<result column="tel" property="tel"/>
+	</resultMap>
+	
+	<!-- 지역검색 -->
+	<select id="searchPlace" resultType="place" parameterType="com.jh.trip.place.model.vo.Place">
+		SELECT * FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+	</select>
+	<select id="searchPlaceCount" resultType="_int">
+		SELECT COUNT(*) FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+	</select>
+	
+	
+	<select id="searchTest" parameterType="HashMap" resultMap="placeMap">
+		SELECT content_Id,address, areacode, sigungucode, cat1, cat2, contenttype_Id, first_Image, mapx, mapy, title, tel  FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+
+	</select>
+	
+	<select id="searchPlaceTest" resultMap="placeMap" parameterType="HashMap">
+		SELECT * FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+	</select>
+	
+	<select id="placeParam" resultType="place" >
+		SELECT * FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+	</select>
+	
+</mapper>

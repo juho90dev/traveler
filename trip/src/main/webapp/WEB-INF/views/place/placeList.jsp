@@ -18,7 +18,7 @@
 	<div class="container">
 		<ol>
 			<li><a href="/">Home</a></li>
-			<li><a href="${Path}/plateList">검색</a></li>
+			<li><a href="${Path}/placeList">검색</a></li>
 		</ol>
 	</div>
 </section>

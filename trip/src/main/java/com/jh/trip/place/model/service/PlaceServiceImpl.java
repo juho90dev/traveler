@@ -26,14 +26,49 @@ public class PlaceServiceImpl implements PlaceService {
 	
 	
 	@Override 
-	public List<Place> searchPlate(Map param, Map<String, Object> pData) {
-		return pmdao.searchPlate(session, param, pData);
+	public List<Place> searchPlace(Map param, Place p) {
+		return pmdao.searchPlace(session, param, p);
 	}
 	
 	@Override
-	public int searchPlateCount(Map pData) {
-		return pmdao.searchPlateCount(session, pData);
+	public int searchPlaceCount(Map pData) {
+		return pmdao.searchPlaceCount(session, pData);
 				
 	}
 
+	@Override
+	public List<Place> searchTest(Map<String, Object> pData) {
+		System.out.println(pData.get("areacode"));
+		System.out.println(pData.get("sigungucode"));
+		System.out.println(pData.get("cat1"));
+		System.out.println(pData.get("cat2"));
+		System.out.println("------------");
+		return pmdao.searchTest(session, pData);
+	}
+	
+	
+	@Override 
+	public List<Place> searchPlaceTest(Map param,Map<String, Object> pData) { 
+		System.out.println("Service!!!!!");
+		System.out.println(pData.get("areacode"));
+		System.out.println(pData.get("sigungucode"));
+		System.out.println(pData.get("cat1"));
+		System.out.println(pData.get("cat2"));
+		System.out.println("------------");
+		return pmdao.searchPlaceTest(session, param, pData);
+	}
+	
+	@Override
+	public Place test1(String k) {
+		return pdao.findByContentId(k);
+
+	}
+	public List<Place> test2(String k) {
+		return pdao.findBycat2(k);
+	}
+	
+	public List<Place> param(Place p) {
+		return pmdao.param(session, p);
+	}
+	
 }
