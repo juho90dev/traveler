@@ -26,7 +26,7 @@
 	<div class="container">
 		<div id="stitle">
 			<div id="search-container">
-				<form id="search" action="${path }/searchResult" method="post">
+				<form id="search" action="${path }/searchPlace" method="post">
 					<div class="travel1">
 						<select name="mainTema" id="mainTema" onchange="change(this)">
 							<option value="tematitle">테마 선택</option>

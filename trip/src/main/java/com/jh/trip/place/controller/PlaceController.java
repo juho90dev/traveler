@@ -32,7 +32,7 @@ public class PlaceController {
 	
 	// 장소 검색
 	
-	@RequestMapping("/searchResult")
+	@RequestMapping("/searchPlace")
 	public ModelAndView searchResult(@RequestParam(defaultValue="1") int cPage,
 			@RequestParam(defaultValue="5") int numPerpage,@RequestParam("mainTema") String mainTema, @RequestParam("subTema") String subTema,
 			@RequestParam("addressDo") String addressDo, @RequestParam("addressDogun") String addressDogun, ModelAndView mv) {
