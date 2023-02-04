@@ -10,21 +10,7 @@
 	<div class="breadcrumb-hero">
 		<div class="container">
 			<div class="breadcrumb-hero">
-            	<h2>검색</h2>
-            	<p>여행지를 검색해 보세요~</p>
-            </div>
-		</div>
-	</div>
-	<div class="container">
-		<ol>
-			<li><a href="/">Home</a></li>
-			<li><a href="${Path}/placeList">검색</a></li>
-		</ol>
-	</div>
-</section>
-<section id="team" class="team">
-	<div class="container">
-		<div id="stitle">
+<div id="stitle">
 			<div id="search-container">
 				<form id="search" action="${path }/searchPlace" method="post">
 					<div class="travel1">
@@ -73,10 +59,49 @@
 						<button type="submit">검색</button>
 					</div>
 				</form>
-				</div>
 			</div>
 		</div>
+            </div>
+		</div>
 	</div>
+	<div class="container">
+		<ol>
+			<li><a href="/">Home</a></li>
+			<li><a href="${Path}/placeList">검색</a></li>
+		</ol>
+	</div>
+</section>
+<section id="team" class="team">
+	<div class="container">
+		<div class="row">
+			<c:if test="${not empty place }">
+						<c:forEach items="${place}" var="p">
+		          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+		            <div class="member" data-aos="fade-up">
+		              <div class="member-img">
+		              <c:if test="${p.firstImage ne null }">
+		                <img  src="${p.firstImage }" height="300" width="300"  alt="">
+		                </c:if>
+		                <c:if test="${p.firstImage eq null }">
+		                	<img src="resources/img/team/team-3.jpg" class="img-fluid"height="300" width="300"  alt="">
+		                </c:if>
+		                <div class="social">
+		                  <a href=""><i class="bi bi-chat"></i></a>
+		                  <a href=""><i  class="bi bi-emoji-smile"></i></a>
+		                  <a href="${path }/memberPage/${m.userId}"><i class="bi bi-person-check"></i></a>
+		                </div>
+		              </div>
+		              <div class="member-info">
+		                <h4><c:out value="${p.title}"/></h4>
+		                <span><c:out value="${p.tel}"/></span>
+		                             </div>
+		            </div>
+		          </div>
+		          </c:forEach>
+					</c:if>
+      </div>
+        </div>
+				<div id="pageBar"><c:out value="${pageBar }" escapeXml="false"/></div>
 </section><!-- End Team Section -->
 <style>
 

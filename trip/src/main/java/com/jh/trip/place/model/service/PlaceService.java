@@ -8,7 +8,7 @@ import com.jh.trip.place.model.vo.Place;
 public interface PlaceService {
 
 	// 검색
-	List<Place> searchPlace(Map param, Place p);
+	List<Place> searchPlace(Map param, Map<String, Object> pData);
 	int searchPlaceCount(Map<String, Object> pData);
 	
 	List<Place> searchTest(Map<String, Object> pData);

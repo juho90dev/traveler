@@ -26,8 +26,8 @@ public class PlaceServiceImpl implements PlaceService {
 	
 	
 	@Override 
-	public List<Place> searchPlace(Map param, Place p) {
-		return pmdao.searchPlace(session, param, p);
+	public List<Place> searchPlace(Map param, Map<String, Object> pData) {
+		return pmdao.searchPlace(session, param, pData);
 	}
 	
 	@Override
@@ -48,14 +48,15 @@ public class PlaceServiceImpl implements PlaceService {
 	
 	
 	@Override 
-	public List<Place> searchPlaceTest(Map param,Map<String, Object> pData) { 
+	public List<Place> searchPlaceTest(Map param, Map<String, Object> pData) { 
 		System.out.println("Service!!!!!");
 		System.out.println(pData.get("areacode"));
 		System.out.println(pData.get("sigungucode"));
 		System.out.println(pData.get("cat1"));
 		System.out.println(pData.get("cat2"));
 		System.out.println("------------");
-		return pmdao.searchPlaceTest(session, param, pData);
+		System.out.println(param);
+		return pmdao.searchPlaceTest1(session,param, pData);
 	}
 	
 	@Override

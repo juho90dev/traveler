@@ -9,7 +9,7 @@
 		<result column="cat1" property="cat1"/>
 		<result column="cat2" property="cat2"/>
 		<result column="contenttype_Id" property="contenttypeId"/>
-		<result column="firstImage" property="firstImage"/>
+		<result column="first_Image" property="firstImage"/>
 		<result column="mapx" property="mapx"/>
 		<result column="mapy" property="mapy"/>
 		<result column="title" property="title"/>
@@ -17,11 +17,14 @@
 	</resultMap>
 	
 	<!-- 지역검색 -->
-	<select id="searchPlace" resultType="place" parameterType="com.jh.trip.place.model.vo.Place">
-		SELECT * FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+	<select id="searchPlace" resultMap="placeMap" parameterType="HashMap">
+		SELECT content_Id,address, areacode, sigungucode, cat1, cat2, contenttype_Id, first_Image, mapx, mapy, title, tel 
+			FROM PLACE 
+				WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+					ORDER BY TITLE
 	</select>
 	<select id="searchPlaceCount" resultType="_int">
-		SELECT COUNT(*) FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+		SELECT COUNT(content_Id) FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
 	</select>
 	
 	

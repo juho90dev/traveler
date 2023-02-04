@@ -13,10 +13,10 @@ import com.jh.trip.place.model.vo.Place;
 public class PlaceMapperDao {
 	
 	
-	public List<Place> searchPlace(SqlSessionTemplate session,Map param, Place p) {
+	public List<Place> searchPlace(SqlSessionTemplate session,Map param, Map<String, Object> pData) {
 		int offset = (int)param.get("cPage");
 		int limit = (int)param.get("numPerpage");
-		return session.selectList("place.searchPlace",p, new RowBounds((offset-1)*limit,limit));
+		return session.selectList("place.searchPlace",pData, new RowBounds((offset-1)*limit,limit));
 	}
 	
 	public int searchPlaceCount(SqlSessionTemplate session, Map<String, Object> pData) {
@@ -43,6 +43,19 @@ public class PlaceMapperDao {
 		System.out.println("------------");
 		// return session.selectList("place.searchPlaceTest",pData, new RowBounds((offset-1)*limit,limit));
 		return null;
+	}
+	public List<Place> searchPlaceTest1(SqlSessionTemplate session,Map param, Map<String, Object> pData) {
+		int offset = (int)param.get("cPage");
+		int limit = (int)param.get("numPerpage");
+		System.out.println("Dao!!!!!");
+		System.out.println(pData.get("areacode"));
+		System.out.println(pData.get("sigungucode"));
+		System.out.println(pData.get("cat1"));
+		System.out.println(pData.get("cat2"));
+		System.out.println("------------");
+		System.out.println(param);
+		return session.selectList("place.searchPlaceTest",pData, new RowBounds((offset-1)*limit,limit));
+		// return null;
 	}
 	
 	public List<Place> param(SqlSessionTemplate session, Place p) {
