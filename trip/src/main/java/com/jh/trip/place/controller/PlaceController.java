@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jh.trip.common.PageBar;
-import com.jh.trip.common.PlacePageBar;
 import com.jh.trip.place.model.service.PlaceService;
 import com.jh.trip.place.model.vo.Place;
 
@@ -36,7 +35,6 @@ public class PlaceController {
 	// 장소 검색
 	
 	@RequestMapping("/searchPlace")
-	@ResponseBody
 	public ModelAndView searchResult(@RequestParam(defaultValue="1") int cPage,
 			@RequestParam(defaultValue="9") int numPerpage,@RequestParam("mainTema") String mainTema, @RequestParam("subTema") String subTema,
 			@RequestParam("addressDo") String addressDo, @RequestParam("addressDogun") String addressDogun, ModelAndView mv) {
@@ -743,17 +741,24 @@ public class PlaceController {
 //		System.out.println("test2 : "+rtest2.get(3));
 //		System.out.println("test2 : "+rtest2.get(4));
 //		System.out.println("------------");
-//		for(int i=0;i<place.size();i++) {
-//			System.out.println(place.get(i));
-//		}
+		for(int i=0;i<place.size();i++) {
+			System.out.println(place.get(i));
+		}
 //
 //
 		System.out.println(totalData);
 		mv.addObject("place",place);
-		mv.addObject("pageBar", PlacePageBar.getPageBar(cPage, numPerpage, totalData, "placeList"));
+		mv.addObject("pageBar", PageBar.getPageBar(cPage, numPerpage, totalData, "placeList"));
 		mv.addObject("totalData", totalData);
 		mv.setViewName("place/placeList");
 		return mv;
+	}
+	
+	
+	// 장소 검색 페이지
+	@RequestMapping("/testPlace")
+	public String testplate() {
+		return "place/testPlace";
 	}
 	
 

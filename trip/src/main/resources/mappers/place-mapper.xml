@@ -24,7 +24,7 @@
 					ORDER BY TITLE
 	</select>
 	<select id="searchPlaceCount" resultType="_int">
-		SELECT COUNT(content_Id) FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+		SELECT COUNT(*) FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
 	</select>
 	
 	

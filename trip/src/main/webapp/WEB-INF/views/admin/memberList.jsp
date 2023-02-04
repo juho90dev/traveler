@@ -44,7 +44,7 @@
 		<div id="search-country">
 			<form action="${pageContext.request.contextPath }/searchMember">
 				<input type="hidden" name="searchType" value="country" >
-				<input type="text" class="form-control"name="searchKeyword" size="25" placeholder="검색할 소도시를 입력하세요" list="ids">
+				<input type="text"name="searchKeyword" size="25" placeholder="검색할 소도시를 입력하세요" list="ids">
 				<datalist id="ids"></datalist>
 				<button type="submit" class="btn btn-primary">검색</button>
 			</form>

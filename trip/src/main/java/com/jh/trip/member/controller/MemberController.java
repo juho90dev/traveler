@@ -64,7 +64,9 @@ public class MemberController {
 		
 		List<Member> member  = service.memberList(param);
 		int totalData = service.memberCount();
-		
+		for(int i=0;i<member.size();i++) {
+			System.out.println(member.get(i));
+		}
 		model.addObject("member",member);
 		model.addObject("pageBar", PageBar.getPageBar(cPage, numPerpage, totalData, "memberList"));
 		model.addObject("totalData", totalData);
