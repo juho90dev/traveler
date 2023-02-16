@@ -154,20 +154,7 @@ public class PlaceController {
 				sigungucode = "8";
 			}
 
-		} else if (addressDo.equals("대구")) {
-			areacode = "5";
-			if (addressDogun.equals("남구")) {
-				sigungucode = "1";
-			} else if (addressDogun.equals("달서구")) {
-				sigungucode = "2";
-			} else if (addressDogun.equals("달성군")) {
-				sigungucode = "3";
-			} else if (addressDogun.equals("동구")) {
-				sigungucode = "4";
-			} else if (addressDogun.equals("북구")) {
-				sigungucode = "5";
-			}
-		} else if (addressDo.equals("광주")) {
+		}  else if (addressDo.equals("광주")) {
 			areacode = "5";
 			if (addressDogun.equals("광산구")) {
 				sigungucode = "1";
@@ -181,7 +168,7 @@ public class PlaceController {
 				sigungucode = "5";
 			}
 		} else if (addressDo.equals("부산")) {
-			areacode = "5";
+			areacode = "6";
 			if (addressDogun.equals("서구")) {
 				sigungucode = "1";
 			} else if (addressDogun.equals("금정구")) {
@@ -397,40 +384,7 @@ public class PlaceController {
 			} else if (addressDogun.equals("계룡시")) {
 				sigungucode = "16";
 			}
-		} else if (addressDo.equals("경상북도")) {
-			areacode = "35";
-			if (addressDogun.equals("공주시")) {
-				sigungucode = "1";
-			} else if (addressDogun.equals("금산군")) {
-				sigungucode = "2";
-			} else if (addressDogun.equals("논산시")) {
-				sigungucode = "3";
-			} else if (addressDogun.equals("당진시")) {
-				sigungucode = "4";
-			} else if (addressDogun.equals("보령시")) {
-				sigungucode = "5";
-			} else if (addressDogun.equals("부여군")) {
-				sigungucode = "6";
-			} else if (addressDogun.equals("서산시")) {
-				sigungucode = "7";
-			} else if (addressDogun.equals("서천군")) {
-				sigungucode = "8";
-			} else if (addressDogun.equals("아산시")) {
-				sigungucode = "9";
-			} else if (addressDogun.equals("예산군")) {
-				sigungucode = "11";
-			} else if (addressDogun.equals("천안시")) {
-				sigungucode = "12";
-			} else if (addressDogun.equals("청양군")) {
-				sigungucode = "13";
-			} else if (addressDogun.equals("태안군")) {
-				sigungucode = "14";
-			} else if (addressDogun.equals("홍성군")) {
-				sigungucode = "15";
-			} else if (addressDogun.equals("계룡시")) {
-				sigungucode = "16";
-			}
-		} else if (addressDo.equals("경상북도")) {
+		}  else if (addressDo.equals("경상북도")) {
 			areacode = "35";
 			if (addressDogun.equals("경산시")) {
 				sigungucode = "1";
@@ -626,15 +580,15 @@ public class PlaceController {
 			} else if (subTema.equals( "관광자원")) {
 				cat2 = "A0102";
 			}
-		} else if (mainTema.equals("인문")) {
+		} else if (mainTema.equals("인문(문화/예술/역사)")) {
 			cat1 = "A02";
-			if (subTema.equals("역사관광지")) {
+			if (subTema.equals("역사 관광지")) {
 				cat2 = "A0201";
-			} else if (subTema.equals("휴양관광지")) {
+			} else if (subTema.equals("휴양 관광지")) {
 				cat2 = "A0202";
-			} else if (subTema.equals("체험관광지")) {
+			} else if (subTema.equals("체험 관광지")) {
 				cat2 = "A0203";
-			} else if (subTema.equals("산업관광지")) {
+			} else if (subTema.equals("산업 관광지")) {
 				cat2 = "A0204";
 			} else if (subTema.equals("건축/조형물")) {
 				cat2 = "A0205";
@@ -690,8 +644,8 @@ public class PlaceController {
 			}
 		}
 		
-		Place p = Place.builder().areacode(areacode).sigungucode(sigungucode)
-				.cat1(cat1).cat2(cat2).build();
+		Place p = Place.builder().area(areacode).sigungu(sigungucode)
+				.mainTema(cat1).subTema(cat2).build();
 		System.out.println("넘어온 파라미터 : "+mainTema +","+ subTema +","+ addressDo +","+ addressDogun);
 		System.out.println("대분류 :"+cat1 +","+"소분류 :"+ cat2 +","+"지역코드 :"+ areacode +","+ "시군구코드 :"+sigungucode);
 		System.out.println("객체에 담음 :"+p);

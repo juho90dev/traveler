@@ -20,13 +20,13 @@ public class Place {
 	
 	private String address; // 주소
 	
-	private String areacode; // 지역코드(ex. 서울=1, 경기=31)
+	private String area; // 지역(ex. 서울=1, 경기=31)
 	
-	private String sigungucode; // 시군구코드 (ex. 강남=1)
+	private String sigungu; // 시군구 (ex. 강남=1)
 	
-	private String cat1; // 대분류(ex. 자연, 인문)
+	private String mainTema; // 대분류(ex. 자연, 인문)
 	
-	private String cat2; // 소분류(ex. 스포츠, 역사, 체험)
+	private String subTema; // 소분류(ex. 스포츠, 역사, 체험)
 	
 	private String contenttypeId; // 타입 (ex. 관광, 숙박 등)
 	
@@ -40,6 +40,6 @@ public class Place {
 	
 	private String tel;
 	
-	
+	private String overview;
 	
 }

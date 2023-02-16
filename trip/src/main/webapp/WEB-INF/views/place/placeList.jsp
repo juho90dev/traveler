@@ -17,7 +17,7 @@
 						<select name="mainTema" id="mainTema" onchange="change(this)">
 							<option value="tematitle">테마 선택</option>
 							<option value="자연">자연</option>
-							<option value="인문">인문(문화/예술/역사)</option>
+							<option value="인문(문화/예술/역사)">인문(문화/예술/역사)</option>
 							<option value="추천코스">추천코스</option>
 							<option value="레포츠">레포츠</option>
 							<option value="숙박">숙박</option>
@@ -48,7 +48,7 @@
 							<option value="전라북도">전라북도</option>
 							<option value="전라남도">전라남도</option>
 							<option value="광주">광주</option>
-							<option value="제주">제주</option>
+							<option value="제주도">제주도</option>
 						</select>
 
 						<select name="addressDogun" id="addressDogun">
@@ -75,33 +75,33 @@
 	<div class="container">
 		<div class="row">
 			<c:if test="${not empty place }">
-						<c:forEach items="${place}" var="p">
-		          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-		            <div class="member" data-aos="fade-up">
-		              <div class="member-img">
-		              <c:if test="${p.firstImage ne null }">
-		                <img  src="${p.firstImage }" height="300" width="300"  alt="">
-		                </c:if>
-		                <c:if test="${p.firstImage eq null }">
-		                	<img src="resources/img/team/team-3.jpg" class="img-fluid"height="300" width="300"  alt="">
-		                </c:if>
-		                <div class="social">
-		                  <a href=""><i class="bi bi-chat"></i></a>
-		                  <a href=""><i  class="bi bi-emoji-smile"></i></a>
-		                  <a href="${path }/memberPage/${m.userId}"><i class="bi bi-person-check"></i></a>
-		                </div>
-		              </div>
-		              <div class="member-info">
-		                <h4><c:out value="${p.title}"/></h4>
-		                <span><c:out value="${p.tel}"/></span>
-		                             </div>
-		            </div>
-		          </div>
-		          </c:forEach>
-					</c:if>
-      </div>
-        </div>
-				<div id="pageBar"><c:out value="${pageBar }" escapeXml="false"/></div>
+				<c:forEach items="${place}" var="p">
+					<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+						<div class="member" data-aos="fade-up">
+							<div class="member-img">
+								<c:if test="${p.firstImage ne null }">
+									<img  src="${p.firstImage }" height="300" width="300"  alt="">
+								</c:if>
+								<c:if test="${p.firstImage eq null }">
+									<img src="resources/img/team/team-3.jpg" class="img-fluid"height="300" width="300"  alt="">
+								</c:if>
+								<div class="social">
+									<a href=""><i class="bi bi-chat"></i></a>
+									<a href=""><i  class="bi bi-emoji-smile"></i></a>
+									<a href="${path }/memberPage/${m.userId}"><i class="bi bi-person-check"></i></a>
+								</div>
+							</div>
+							<div class="member-info">
+			                	<h4><c:out value="${p.title}"/></h4>
+			                	<span><c:out value="${p.tel}"/></span>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</c:if>
+		</div>
+	</div>
+	<div id="pageBar"><c:out value="${pageBar }" escapeXml="false"/></div>
 </section><!-- End Team Section -->
 <style>
 
@@ -381,6 +381,11 @@ h1 {
 .dropdown-content.show {
 	display: block;
 }
+
+
+
+
+
 </style>
 <script>
     let d;
@@ -407,7 +412,7 @@ h1 {
       const 전라남도 = ["강진군", "고흥군", "곡성군", "광양시", "구례군", "나주시", "담양군", "목포시", "무안군", "보성군", "순천시", "신안군", "여수시", "영광군", "영암군", "완도군", "장성군", "장흥군", "진도군", "함평군", "해남군", "화순군"];
       const 광주 = ["광산구", "남구", "동구", "북구", "서구"];
 
-      const 제주 = ["남제주군", "북제주군", "서귀포시", "제주시"];
+      const 제주도 = ["남제주군", "북제주군", "서귀포시", "제주시"];
 
       const target = document.getElementById("addressDogun");
 
@@ -427,7 +432,7 @@ h1 {
       else if (e.value == "전라북도") d = 전라북도;
       else if (e.value == "전라남도") d = 전라남도;
       else if (e.value == "광주") d = 광주;
-      else if (e.value == "제주") d = 제주;
+      else if (e.value == "제주도") d = 제주도;
 
       target.options.length = 0;
 
@@ -439,13 +444,45 @@ h1 {
       });
     }
 
-  </script>
-<script>
+
     // 테마 드롭다운
+/*     let d1;
+    function change(e1) {
+
+      const 자연 = ["자연 관광지", "관광 자원"];
+      const 인문(문화/예술/역사) = ["역사 관광지", "휴양 관광지", "체험 관광지", "산업 관광지", "건축/조형물", "문화시설", "축제", "공연/행사"];
+      const 추천코스 = ["가족코스", "나홀로코스", "힐링코스", "도보코스", "캠핑코스", "맛코스"];
+      const 레포츠 = ["레포츠 소개", "육상 레포츠", "수상 레포츠", "항공 레포츠", "복합 스포츠"];
+      const 숙박 = ["숙박시설"];
+      const 쇼핑 = ["쇼핑"];
+      const 음식 = ["음식점"];
+
+      let target1 = document.getElementById("subTema");
+      
+      if (e1.value == "tematitle") d1 = tematitle;
+      else if (e1.value == "자연") d1 = 자연;
+      else if (e1.value == "인문(문화/예술/역사)") d1 = 인문;
+      else if (e1.value == "추천코스") d1 = 추천코스;
+      else if (e1.value == "레포츠") d1 = 레포츠;
+      else if (e1.value == "숙박") d1 = 숙박;
+      else if (e1.value == "쇼핑")  d1 = 쇼핑;
+      else if (e1.value == "음식")  d1 = 음식;
+
+      target1.options.length = 0;
+
+      d1.forEach(v1=>{
+        let opt1 = document.createElement("option");
+        opt1.value = v1;
+        opt1.innerHTML = v1;
+        target1.appendChild(opt1);
+      });
+    } */
+
+    
     let d1;
     function change(e1) {
 
-      const 자연 = ["자연관광지", "관광자원"];
+      const 자연 = ["자연 관광지", "관광 자원"];
       const 인문 = ["역사관광지", "휴양관광지", "체험관광지", "산업관광지", "건축/조형물", "문화시설", "축제", "공연/행사"];
       const 추천코스 = ["가족코스", "나홀로코스", "힐링코스", "도보코스", "캠핑코스", "맛코스"];
       const 레포츠 = ["레포츠 소개", "육상 레포츠", "수상 레포츠", "항공 레포츠", "복합 스포츠"];
@@ -473,7 +510,6 @@ h1 {
         target1.appendChild(opt1);
       });
     }
-
   </script>
 
   

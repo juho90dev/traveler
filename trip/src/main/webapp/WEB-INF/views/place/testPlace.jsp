@@ -87,7 +87,26 @@
 		</form>
 	</div>
 </div>
-
+<div class="container24">
+		<section class="test1">
+        	<c:if test="${not empty place }">
+        		<c:forEach items="${place}" var="p">
+        			<div class="card">
+	        			<c:if test="${p.firstImage ne null }">
+	        				<img src="${p.firstImage }">
+	        			</c:if>
+	        			<c:if test="${p.firstImage eq null }">
+	        				<img src="resources/img/team/team-3.jpg" class="img-fluid"height="300" width="300"  alt="">
+	        			</c:if>
+	            		<br>
+			            <p class="test3"><span ></span><br></p>
+			            <p class="test3"><span style="font-size: 18px; text-align: center;">${p.title}</span></p>
+			            <p class="test3"><span style="font-size: 12px;">${p.tel}</span></p>
+		            </div>
+				</c:forEach>
+			</c:if>
+		</section>
+	</div> 
 
 <script>
 
@@ -258,6 +277,63 @@ let d;
 	height: 30px;
 	text-align: center;
 }
+
+
+
+
+
+
+        .container24 { 
+          width: 90%;
+          max-width: 1200px;
+          min-width: 370px;
+        }
+    
+        .test2 {
+          margin-top: 40px;
+          text-decoration: coral underline; 
+          text-underline-position: under;
+          line-height: 100px;
+          text-align: center;
+        }
+        
+        .test1 {
+          width: 1200px;
+        }
+    
+        .card {
+          width: 250px;
+          height: 280px;
+          background-color: white;
+          margin: 5px; 
+          float: left;
+          }
+    
+          .card img {
+            width: 250px;
+            height: 200px;
+          }
+    
+          .test3 {
+            line-height: 14px;
+            margin: 10px;
+            margin-top: -10px;
+            text-align: center;
+          }
+    
+          .money {
+            text-align: center;
+            width: 30px;
+            background-color: wheat;
+            color: brown;
+            position: relative;
+            bottom: 65px;
+            left: 100px;
+          }
+    
+
+
+         
 </style>
 
 
