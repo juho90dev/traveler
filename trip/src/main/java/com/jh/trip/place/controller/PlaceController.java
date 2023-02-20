@@ -5,16 +5,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.metamodel.SetAttribute;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jh.trip.common.PageBar;
+import com.jh.trip.common.PlanPageBar;
 import com.jh.trip.place.model.service.PlaceService;
 import com.jh.trip.place.model.vo.Place;
+import com.jh.trip.request.model.vo.Request;
 
 @Controller
 public class PlaceController {
@@ -36,11 +43,11 @@ public class PlaceController {
 	
 	@RequestMapping("/searchPlace")
 	public ModelAndView searchResult(@RequestParam(defaultValue="1") int cPage,
-			@RequestParam(defaultValue="9") int numPerpage,@RequestParam("mainTema") String mainTema, @RequestParam("subTema") String subTema,
-			@RequestParam("area") String area, @RequestParam("sigungu") String sigungu, ModelAndView mv) {
+			@RequestParam(defaultValue="8") int numPerpage,@RequestParam("mainTema") String mainTema, @RequestParam("subTema") String subTema,
+			@RequestParam("area") String area, @RequestParam("sigungu") String sigungu, ModelAndView mv, HttpServletRequest req) {
+
 		
-		
-		
+		String url = req.getRequestURI();
 
 
 		
@@ -65,6 +72,7 @@ public class PlaceController {
 		System.out.println("------------");
 		System.out.println("Map에 담음 : "+pData);
 		System.out.println(pData.get("area"));
+		System.out.println(pData.get("mainTema"));
 		System.out.println("------------");
 		// 1. 오류1 페이징과 Map에 담아서 파라미터 전달하기 해결 : 오타였다.....하...
 		place = ps.searchPlaceTest(param,pData);
@@ -83,28 +91,19 @@ public class PlaceController {
 		// 특정 파라미터 테스트 이건 잘 나온다.
 		String test1 = "134808";
 		String test2 = "A0502";
-//		Place rtest1 = ps.test1(test1);
-//		List<Place> rtest2 = ps.test2(test2);
-//		System.out.println("------------");
-//		System.out.println("test1(특정 contentId) : "+rtest1);
-//		System.out.println("------------");
-//		System.out.println("------------");
-//		System.out.println("test2(특정 소분류) : "+rtest2.get(0));
-//		System.out.println("test2 : "+rtest2.get(1));
-//		System.out.println("test2 : "+rtest2.get(2));
-//		System.out.println("test2 : "+rtest2.get(3));
-//		System.out.println("test2 : "+rtest2.get(4));
-//		System.out.println("------------");
-//		for(int i=0;i<place.size();i++) {
-//			System.out.println(place.get(i));
-//		}
+
+		for(int i=0;i<place.size();i++) {
+			System.out.println(place.get(i));
+		}
 //
 //
-//		System.out.println(totalData);
-//		mv.addObject("place",place);
-//		mv.addObject("pageBar", PageBar.getPageBar(cPage, numPerpage, totalData, "placeList"));
-//		mv.addObject("totalData", totalData);
-		mv.setViewName("place/testPlace");
+		System.out.println(totalData);
+		System.out.println(url);
+		
+		mv.addObject("place",place);
+		mv.addObject("pageBar", PlanPageBar.getPageBar(cPage, numPerpage, totalData, "/searchPlace", p));
+		mv.addObject("totalData", totalData);
+		mv.setViewName("place/placeList");
 		return mv;
 	}
 	
@@ -112,6 +111,7 @@ public class PlaceController {
 	// 장소 검색 페이지
 	@RequestMapping("/testPlace")
 	public String testplate() {
+		
 		return "place/testPlace";
 	}
 	
@@ -122,7 +122,7 @@ public class PlaceController {
 		System.out.println(mainTema);
 		System.out.println(subTema);
 		
-		return "place/testPlace";
+		return "place/placeList";
 	}
 	
 

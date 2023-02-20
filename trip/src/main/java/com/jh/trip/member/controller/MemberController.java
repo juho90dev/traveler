@@ -300,7 +300,7 @@ public class MemberController {
 		int totalData = service.normalmemberCount(grade);
 		
 		model.addObject("member",member);
-		model.addObject("pageBar", PageBar.getPageBar(cPage, numPerpage, totalData, "memberList"));
+		model.addObject("pageBar", PageBar.getPageBar(cPage, numPerpage, totalData, "/normalMemberList"));
 		model.addObject("totalData", totalData);
 		model.setViewName("admin/memberList");
 		
@@ -321,7 +321,7 @@ public class MemberController {
 		int totalData = service.plannermemberCount(grade);
 		
 		model.addObject("member",member);
-		model.addObject("pageBar", PageBar.getPageBar(cPage, numPerpage, totalData, "memberList"));
+		model.addObject("pageBar", PageBar.getPageBar(cPage, numPerpage, totalData, "/plannerMemberList"));
 		model.addObject("totalData", totalData);
 		model.setViewName("admin/memberList");
 		

@@ -35,7 +35,7 @@
 	</select>
 	
 	<select id="searchPlaceTest" resultMap="placeMap" parameterType="HashMap">
-		SELECT * FROM PLACE WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema} AND AREA=#{area} AND SIGUNGU=#{sigungu}
+		SELECT  content_Id,address, area, sigungu, main_tema, sub_tema, contenttype_Id, first_Image, mapx, mapy, title, tel FROM PLACE WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema} AND AREA=#{area} AND SIGUNGU=#{sigungu}
 	</select>
 	
 	<select id="placeParam" resultType="place" >

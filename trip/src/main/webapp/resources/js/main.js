@@ -289,3 +289,29 @@
   new PureCounter();
 
 })()
+
+
+
+
+
+function fn_ajaxPage1(pageNo){
+	const page = $("#page").val();
+	$.ajax({
+		url:"/searchPlace.do"+".do",
+		data:{"cPage":pageNo,"mainTema":$("#mainTema").val(),"subTema":$("#subTema").val(),"area":$("#area").val(),"sigungu":$("#sigungu").val()},
+		dataType:"html",
+		success:data=>{
+			$("#databox").html(data);
+		}
+	});
+};
+function fn_ajaxPage2(pageNo,numPerpage){
+	$.ajax({
+		url:"/searchPlace.do"+".do",
+		data:{"cPage":pageNo,"numPerpage":numPerpage,"mainTema":$(place.mainTema).val(),"subTema":$("#subTema").val(),"area":$("#area").val(),"sigungu":$("#sigungu").val()},
+		dataType:"html",
+		success:data=>{
+			$("#databox").html(data);
+		}
+	});
+};

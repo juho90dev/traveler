@@ -30,12 +30,12 @@
 
 <div>
 	<div id="Toggle1"  style="display:none; text-align:center">
-		<form action="${pageContext.request.contextPath }/searchPlace">
+		<form action="${pageContext.request.contextPath }/searchPlace" method="get">
 			<div class="travel1">
 				<select name="mainTema" id="mainTema" onchange="change(this)">
 					<option value="tematitle">테마 선택</option>
 					<option value="자연">자연</option>
-					<option value="인문">인문(문화/예술/역사)</option>
+					<option value="인문(문화/예술/역사)">인문(문화/예술/역사)</option>
 					<option value="추천코스">추천코스</option>
 					<option value="레포츠">레포츠</option>
 					<option value="숙박">숙박</option>
@@ -78,7 +78,7 @@
 				<select name="mainTema" id="mainTema" onchange="changeT(this)">
 					<option value="tematitle1">테마 선택</option>
 					<option value="자연">자연</option>
-					<option value="인문">인문(문화/예술/역사)</option>
+					<option value="인문(문화/예술/역사)">인문(문화/예술/역사)</option>
 					<option value="추천코스">추천코스</option>
 					<option value="레포츠">레포츠</option>
 					<option value="숙박">숙박</option>
@@ -126,6 +126,8 @@
 <div class="container24">
 		<section class="test1">
         	<c:if test="${not empty place }">
+        		<p style="font-size:30px; margin: 0 auto;
+          margin-right: 50px;">검색 결과</p>
         		<c:forEach items="${place}" var="p">
         			<div class="card">
 	        			<c:if test="${p.firstImage ne null }">
@@ -143,6 +145,7 @@
 			</c:if>
 		</section>
 	</div> 
+			<div id="pageBar"><c:out value="${pageBar }" escapeXml="false"/></div>
 </section><!-- End About Section -->
 <script>
 
@@ -166,11 +169,11 @@ $(function (){
 let d1;
 function change(e1) {
 
-  const 자연 = ["자연관광지", "관광자원"];
-  const 인문 = ["역사관광지", "휴양관광지", "체험관광지", "산업관광지", "건축/조형물", "문화시설", "축제", "공연/행사"];
+  const 자연 = ["자연 관광지", "관광자원"];
+  const 인문 = ["역사 관광지", "휴양 관광지", "체험 관광지", "산업 관광지", "건축/조형물", "문화시설", "축제", "공연/행사"];
   const 추천코스 = ["가족코스", "나홀로코스", "힐링코스", "도보코스", "캠핑코스", "맛코스"];
   const 레포츠 = ["레포츠 소개", "육상 레포츠", "수상 레포츠", "항공 레포츠", "복합 스포츠"];
-  const 숙박 = ["숙박 시설"];
+  const 숙박 = ["숙박시설"];
   const 쇼핑 = ["쇼핑"];
   const 음식 = ["음식점"];
 
@@ -178,7 +181,7 @@ function change(e1) {
   
   if (e1.value == "tematitle") d1 = tematitle;
   else if (e1.value == "자연") d1 = 자연;
-  else if (e1.value == "인문") d1 = 인문;
+  else if (e1.value == "인문(문화/예술/역사)") d1 = 인문;
   else if (e1.value == "추천코스") d1 = 추천코스;
   else if (e1.value == "레포츠") d1 = 레포츠;
   else if (e1.value == "숙박") d1 = 숙박;
@@ -198,11 +201,11 @@ function change(e1) {
 let d2
 function changeT(e2) {
 
-  const 자연 = ["자연관광지", "관광자원"];
-  const 인문 = ["역사관광지", "휴양관광지", "체험관광지", "산업관광지", "건축/조형물", "문화시설", "축제", "공연/행사"];
+  const 자연 = ["자연 관광지", "관광 자원"];
+  const 인문 = ["역사 관광지", "휴양 관광지", "체험 관광지", "산업 관광지", "건축/조형물", "문화시설", "축제", "공연/행사"];
   const 추천코스 = ["가족코스", "나홀로코스", "힐링코스", "도보코스", "캠핑코스", "맛코스"];
   const 레포츠 = ["레포츠 소개", "육상 레포츠", "수상 레포츠", "항공 레포츠", "복합 스포츠"];
-  const 숙박 = ["숙박 시설"];
+  const 숙박 = ["숙박시설"];
   const 쇼핑 = ["쇼핑"];
   const 음식 = ["음식점"];
 
@@ -210,7 +213,7 @@ function changeT(e2) {
   
   if (e2.value == "tematitle1") d2 = tematitle;
   else if (e2.value == "자연") d2 = 자연;
-  else if (e2.value == "인문") d2 = 인문;
+  else if (e2.value == "인문(문화/예술/역사)") d2 = 인문;
   else if (e2.value == "추천코스") d2 = 추천코스;
   else if (e2.value == "레포츠") d2 = 레포츠;
   else if (e2.value == "숙박") d2 = 숙박;
@@ -339,6 +342,8 @@ let a;
         target.appendChild(opt);
       });
     }
+    
+
 </script>
 <style>
 #btn_toggle1{
@@ -412,9 +417,12 @@ let a;
 }
 
 .container24 { 
-	width: 90%;
     max-width: 1200px;
     min-width: 370px;
+    padding:10px 15px;
+    border-radius:5px;
+    margin: 0 auto;
+          margin-top: 10px;
 }
 
 .test2 {
@@ -427,14 +435,16 @@ let a;
         
 .test1 {
 	width: 1200px;
+	text-align:center;
 }
-    
+ 
 .card {
 	width: 250px;
 	height: 280px;
 	background-color: white;
-	margin: 5px;
+	margin: 1.5%;
 	float: left;
+	align:center;
 }
     
 .card img {
@@ -449,15 +459,7 @@ let a;
 	text-align: center;
 }
     
-.money {
-	text-align: center;
-	width: 30px;
-	background-color: wheat;
-	color: brown;
-	position: relative;
-	bottom: 65px;
-	left: 100px;
-}
+
     
 
 
