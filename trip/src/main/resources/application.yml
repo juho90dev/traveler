@@ -27,9 +27,9 @@ spring:
     show-sql: true
     database: oracle
     database-platform: org.hibernate.dialect.Oracle9iDialect
-#    hibernate: 
-#      ddl-auto: none
-#      use-new-id-generator-mappings: true
+    hibernate: 
+      ddl-auto: update
+      use-new-id-generator-mappings: true
 
 #파일 업로드 처리  
   servlet:

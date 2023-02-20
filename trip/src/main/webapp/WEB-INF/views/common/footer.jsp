@@ -15,13 +15,9 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>ALLIN MEMBERS</h4>
+            <h4>ALLIN</h4>
             <ul>
               <li>이주호</li>
-              <li>김도영</li>
-              <li>신동석</li>
-              <li>김도희</li>
-              <li>정현희</li>
             </ul>
           </div>
 

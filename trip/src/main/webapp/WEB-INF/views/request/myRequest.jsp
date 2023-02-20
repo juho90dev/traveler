@@ -31,14 +31,15 @@
 					<table class="table">
 					  <caption>표 제목</caption>
 					  <tr>
-					  <th>주문번호</th>
+					  <th>요청 번호</th>
 					  <th>플래너아이디</th>
-					  <th>여행시작일</th>
-					  <th>여행종료일</th>
-					  <th>교통수단</th>
-					  <th>관광테마</th>
-					  <th>수락여부</th>
-					  <th>요청삭제</th>
+					  <th>여행 제목</th>
+					  <th>여행 시작일</th>
+					  <th>여행 종료일</th>
+					  <th>교통 수단</th>
+					  <th>관광 테마</th>
+					  <th>수락 여부</th>
+					  <th>요청 삭제</th>
 					  </tr>
 
 				<tbody>
@@ -46,6 +47,7 @@
 					<tr>
 					<td>1</td>
 					<td>korea</td>
+					<td>강원도 여행가드래요</td>
 					<td>2022-12-23</td>
 					<td>2022-12-23</td>
 					<td>기차</td>

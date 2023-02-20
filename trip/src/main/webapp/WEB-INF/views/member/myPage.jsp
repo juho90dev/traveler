@@ -11,7 +11,6 @@
 		<div class="container">
 			<div class="breadcrumb-hero">
             	<h2>회원 페이지</h2>
-            	<p>다른 회원님의 정보를 알아보세요.</p>
 			</div>
 		</div>
 	</div>

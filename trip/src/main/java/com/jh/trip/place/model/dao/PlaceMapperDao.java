@@ -25,10 +25,10 @@ public class PlaceMapperDao {
 	
 	
 	public List<Place> searchTest(SqlSessionTemplate session, Map<String, Object> pData){
-		System.out.println(pData.get("areacode"));
-		System.out.println(pData.get("sigungucode"));
-		System.out.println(pData.get("cat1"));
-		System.out.println(pData.get("cat2"));
+		System.out.println(pData.get("area"));
+		System.out.println(pData.get("sigungu"));
+		System.out.println(pData.get("mainTema"));
+		System.out.println(pData.get("subTema"));
 		System.out.println("------------");
 		return session.selectList("place.searchTest", pData);
 	}
@@ -36,10 +36,10 @@ public class PlaceMapperDao {
 	public List<Place> searchPlaceTest(SqlSessionTemplate session, Map param, Map<String, Object> pData) {
 		int offset = (int)param.get("cPage");
 		int limit = (int)param.get("numPerpage");
-		System.out.println(pData.get("areacode"));
-		System.out.println(pData.get("sigungucode"));
-		System.out.println(pData.get("cat1"));
-		System.out.println(pData.get("cat2"));
+		System.out.println(pData.get("area"));
+		System.out.println(pData.get("sigungu"));
+		System.out.println(pData.get("mainTema"));
+		System.out.println(pData.get("subTema"));
 		System.out.println("------------");
 		// return session.selectList("place.searchPlaceTest",pData, new RowBounds((offset-1)*limit,limit));
 		return null;
@@ -48,10 +48,10 @@ public class PlaceMapperDao {
 		int offset = (int)param.get("cPage");
 		int limit = (int)param.get("numPerpage");
 		System.out.println("Dao!!!!!");
-		System.out.println(pData.get("areacode"));
-		System.out.println(pData.get("sigungucode"));
-		System.out.println(pData.get("cat1"));
-		System.out.println(pData.get("cat2"));
+		System.out.println(pData.get("area"));
+		System.out.println(pData.get("sigungu"));
+		System.out.println(pData.get("mainTema"));
+		System.out.println(pData.get("subTema"));
 		System.out.println("------------");
 		System.out.println(param);
 		return session.selectList("place.searchPlaceTest",pData, new RowBounds((offset-1)*limit,limit));

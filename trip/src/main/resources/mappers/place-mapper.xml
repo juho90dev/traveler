@@ -4,41 +4,42 @@
 	<resultMap id="placeMap" type="place">
 		<id column="content_Id" property="contentId"/>
 		<result column="address" property="address"/>
-		<result column="areacode" property="areacode"/>
-		<result column="sigungucode" property="sigungucode"/>
-		<result column="cat1" property="cat1"/>
-		<result column="cat2" property="cat2"/>
+		<result column="areac" property="area"/>
+		<result column="sigungu" property="sigungu"/>
+		<result column="main_Tema" property="mainTema"/>
+		<result column="sub_Tema" property="subTema"/>
 		<result column="contenttype_Id" property="contenttypeId"/>
 		<result column="first_Image" property="firstImage"/>
 		<result column="mapx" property="mapx"/>
 		<result column="mapy" property="mapy"/>
 		<result column="title" property="title"/>
 		<result column="tel" property="tel"/>
+		<result column="overview" property="overview"/>
 	</resultMap>
 	
 	<!-- 지역검색 -->
 	<select id="searchPlace" resultMap="placeMap" parameterType="HashMap">
-		SELECT content_Id,address, areacode, sigungucode, cat1, cat2, contenttype_Id, first_Image, mapx, mapy, title, tel 
+		SELECT content_Id,address, area, sigungu, main_tema, sub_tema, contenttype_Id, first_Image, mapx, mapy, title, tel 
 			FROM PLACE 
-				WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+				WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema} AND AREA=#{area} AND SIGUNGU=#{sigungu}
 					ORDER BY TITLE
 	</select>
 	<select id="searchPlaceCount" resultType="_int">
-		SELECT COUNT(*) FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+		SELECT COUNT(*) FROM PLACE WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema} AND AREA=#{area} AND SIGUNGU=#{sigungu}
 	</select>
 	
 	
 	<select id="searchTest" parameterType="HashMap" resultMap="placeMap">
-		SELECT content_Id,address, areacode, sigungucode, cat1, cat2, contenttype_Id, first_Image, mapx, mapy, title, tel  FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+		SELECT content_Id,address, area, sigungu, main_tema, sub_tema, contenttype_Id, first_Image, mapx, mapy, title, tel  FROM PLACE WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema} AND AREA=#{area} AND SIGUNGU=#{sigungu}
 
 	</select>
 	
 	<select id="searchPlaceTest" resultMap="placeMap" parameterType="HashMap">
-		SELECT * FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+		SELECT * FROM PLACE WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema} AND AREA=#{area} AND SIGUNGU=#{sigungu}
 	</select>
 	
 	<select id="placeParam" resultType="place" >
-		SELECT * FROM PLACE WHERE CAT1=#{cat1} AND CAT2=#{cat2} AND AREACODE=#{areacode} AND SIGUNGUCODE=#{sigungucode}
+		SELECT * FROM PLACE WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema} AND AREA=#{area} AND SIGUNGU=#{sigungu}
 	</select>
 	
 </mapper>

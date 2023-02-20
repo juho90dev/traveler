@@ -11,6 +11,6 @@ import com.jh.trip.place.model.vo.Place;
 public interface PlaceDao extends JpaRepository<Place, String>{
 	
 	Place findByContentId(String k);
-	List<Place> findBycat2(String k);
+	List<Place> findBysubTema(String k);
 
 }

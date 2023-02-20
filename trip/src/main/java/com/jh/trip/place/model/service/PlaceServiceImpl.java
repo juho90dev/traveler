@@ -38,10 +38,10 @@ public class PlaceServiceImpl implements PlaceService {
 
 	@Override
 	public List<Place> searchTest(Map<String, Object> pData) {
-		System.out.println(pData.get("areacode"));
-		System.out.println(pData.get("sigungucode"));
-		System.out.println(pData.get("cat1"));
-		System.out.println(pData.get("cat2"));
+		System.out.println(pData.get("area"));
+		System.out.println(pData.get("sigungu"));
+		System.out.println(pData.get("mainTema"));
+		System.out.println(pData.get("subTema"));
 		System.out.println("------------");
 		return pmdao.searchTest(session, pData);
 	}
@@ -50,10 +50,10 @@ public class PlaceServiceImpl implements PlaceService {
 	@Override 
 	public List<Place> searchPlaceTest(Map param, Map<String, Object> pData) { 
 		System.out.println("Service!!!!!");
-		System.out.println(pData.get("areacode"));
-		System.out.println(pData.get("sigungucode"));
-		System.out.println(pData.get("cat1"));
-		System.out.println(pData.get("cat2"));
+		System.out.println(pData.get("area"));
+		System.out.println(pData.get("sigungu"));
+		System.out.println(pData.get("mainTema"));
+		System.out.println(pData.get("subTema"));
 		System.out.println("------------");
 		System.out.println(param);
 		return pmdao.searchPlaceTest1(session,param, pData);
@@ -65,7 +65,7 @@ public class PlaceServiceImpl implements PlaceService {
 
 	}
 	public List<Place> test2(String k) {
-		return pdao.findBycat2(k);
+		return pdao.findBysubTema(k);
 	}
 	
 	public List<Place> param(Place p) {
