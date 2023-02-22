@@ -61,6 +61,7 @@ public class PlaceController {
 		int totalData = 0;
 		
 		Map param = Map.of("cPage", cPage, "numPerpage", numPerpage);
+		Map<String,Object> testP = Map.of("mainTema",mainTema,"subTema",subTema,"area",area,"sigungu",sigungu);
 		Map<String, Object> pData = new HashMap<>();
 		
 		pData.put("mainTema", mainTema);
@@ -101,7 +102,7 @@ public class PlaceController {
 		System.out.println(url);
 		
 		mv.addObject("place",place);
-		mv.addObject("pageBar", PlanPageBar.getPageBar(cPage, numPerpage, totalData, "/searchPlace", p));
+		mv.addObject("pageBar", PlanPageBar.getPageBar(cPage, numPerpage, totalData, "/searchPlace", testP));
 		mv.addObject("totalData", totalData);
 		mv.setViewName("place/placeList");
 		return mv;

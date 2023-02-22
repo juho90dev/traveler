@@ -1,8 +1,10 @@
 package com.jh.trip.common;
 
+import java.util.Map;
+
 public class PlanPageBar {
 
-	public static String getPageBar(int cPage, int numPerpage, int totalData, String url) {
+	public static String getPageBar(int cPage, int numPerpage, int totalData, String url, Map testP) {
 		String pageBar="";
 		
 		int totalPage = (int)Math.ceil((double)totalData/numPerpage);
@@ -47,7 +49,7 @@ public class PlanPageBar {
 		pageBar+="</ul>";
 		pageBar+="<script>";
 		pageBar+="function fn_paging(pageNo){";
-		pageBar+="location.href='"+url+"?cPage='+pageNo";
+		pageBar+="location.href='"+url+"?mainTema="+testP.get("mainTema")+"&subTema="+testP.get("subTema")+"&area="+testP.get("area")+"&sigungu="+testP.get("sigungu")+"&cPage='+pageNo";
 		pageBar+="}";
 		pageBar+="</script>";
 		
