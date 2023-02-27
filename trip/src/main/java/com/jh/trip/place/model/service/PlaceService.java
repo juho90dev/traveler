@@ -7,18 +7,25 @@ import com.jh.trip.place.model.vo.Place;
 
 public interface PlaceService {
 
-	// 검색
-	List<Place> searchPlace(Map param, Map<String, Object> pData);
-	int searchPlaceCount(Map<String, Object> pData);
+	// 통합 검색
+	List<Place> searchTotal(Map param, Map<String, Object> pData);
+	int searchTotalCount(Map<String, Object> pData);
 	
-	List<Place> searchTest(Map<String, Object> pData);
+	// 테마 검색
+	List<Place> searchTema(Map param, Map<String, Object> pData);
+	int searchTemaCount(Map<String, Object> pData);
 	
-	List<Place> searchPlaceTest(Map param, Map<String, Object> pData);
+	// 지역 검색
+	List<Place> searchArea(Map param, Map<String, Object> pData);
+	int searchAreaCount(Map<String, Object> pData);
 	
-	Place test1(String k);
-	List<Place> test2(String k);
+	// 키워드 검색
+	List<Place> searchKeyword(Map param, String keyword);
+	int searchKeywordCount(String keyword);
 	
-	List<Place> param(Place p);
+
+	
+
 	
 	
 }

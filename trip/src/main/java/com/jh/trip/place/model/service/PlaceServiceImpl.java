@@ -25,30 +25,9 @@ public class PlaceServiceImpl implements PlaceService {
 	private SqlSessionTemplate session;
 	
 	
+	// 통합 검색
 	@Override 
-	public List<Place> searchPlace(Map param, Map<String, Object> pData) {
-		return pmdao.searchPlace(session, param, pData);
-	}
-	
-	@Override
-	public int searchPlaceCount(Map pData) {
-		return pmdao.searchPlaceCount(session, pData);
-				
-	}
-
-	@Override
-	public List<Place> searchTest(Map<String, Object> pData) {
-		System.out.println(pData.get("area"));
-		System.out.println(pData.get("sigungu"));
-		System.out.println(pData.get("mainTema"));
-		System.out.println(pData.get("subTema"));
-		System.out.println("------------");
-		return pmdao.searchTest(session, pData);
-	}
-	
-	
-	@Override 
-	public List<Place> searchPlaceTest(Map param, Map<String, Object> pData) { 
+	public List<Place> searchTotal(Map param, Map<String, Object> pData) { 
 		System.out.println("Service!!!!!");
 		System.out.println(pData.get("area"));
 		System.out.println(pData.get("sigungu"));
@@ -56,20 +35,48 @@ public class PlaceServiceImpl implements PlaceService {
 		System.out.println(pData.get("subTema"));
 		System.out.println("------------");
 		System.out.println(param);
-		return pmdao.searchPlaceTest1(session,param, pData);
+		return pmdao.searchTotal(session,param, pData);
 	}
 	
 	@Override
-	public Place test1(String k) {
-		return pdao.findByContentId(k);
-
+	public int searchTotalCount(Map pData) {
+		return pmdao.searchTotalCount(session, pData);
+				
 	}
-	public List<Place> test2(String k) {
-		return pdao.findBysubTema(k);
+
+	// 테마 검색
+	@Override
+	public List<Place> searchTema(Map param, Map<String, Object> pData) {
+		
+		return pmdao.searchTema(session, param, pData);
 	}
 	
-	public List<Place> param(Place p) {
-		return pmdao.param(session, p);
+	@Override
+	public int searchTemaCount(Map<String, Object> pData) {
+		return pmdao.searchTemaCount(session, pData);
+	}
+	
+	// 지역 검색
+	
+	@Override
+	public List<Place> searchArea(Map param, Map<String, Object> pData){
+		return pmdao.searchArea(session, param, pData);
+	}
+
+	@Override
+	public int searchAreaCount(Map<String, Object> pData) {
+		return pmdao.searchAreaCount(session, pData);
+	}
+
+	// 키워드 검색
+	@Override
+	public List<Place> searchKeyword(Map param, String keyword){
+		return pmdao.searchKeyword(session, param, keyword);
+	}
+	
+	@Override
+	public int searchKeywordCount(String keyword) {
+		return pmdao.searchKeywordCount(session, keyword);
 	}
 	
 }

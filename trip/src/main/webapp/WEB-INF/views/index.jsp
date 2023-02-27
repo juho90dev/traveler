@@ -8,8 +8,8 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container" data-aos="fade-up">
-      <h1>나만의 여행 플래너 트래블러!</h1>
-      <h2>다양한 여행계획을 세우고 공유해보세요!</h2>
+      <h1 style="color:ivory">나만의 여행 플래너 트래블러!</h1>
+      <h2 style="color:ivory">다양한 여행계획을 세우고 공유해보세요!</h2>
     </div>
   </section><!-- End Hero -->
 

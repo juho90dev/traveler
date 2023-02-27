@@ -25,6 +25,7 @@
  <div id="search-option-container" style="text-align:left;"> 
 	<button id="btn_toggle2" class="btn btn-primary">테마 검색</button>
 	<button id="btn_toggle3" class="btn btn-primary">지역 검색</button>
+	<button id="btn_toggle4" class="btn btn-primary">키워드 검색</button>
 	<button id="btn_toggle1" class="btn btn-primary">통합 검색</button>
 </div>
 
@@ -73,7 +74,7 @@
 		</form>
 	</div>
 	<div id="Toggle2"  style="display:none; text-align:center">
-		<form id="search" action="${path }/searchTema" method="post">
+		<form id="search" action="${path }/searchTema" method="get">
 			<div class="travel1">
 				<select name="mainTema" id="mainTema" onchange="changeT(this)">
 					<option value="tematitle1">테마 선택</option>
@@ -122,24 +123,31 @@
 			</div>
 		</form>
 	</div>
+	<div id="Toggle4"  style="display:none; text-align:center">
+			<div class="keyword">
+				<form action="${path }/searchKeyword">
+					<input type="text" name="keyword" size="25" placeholder="키워드 검색">
+					<button type="submit" class="btn btn-primary">검색</button>
+				</form>
+			</div>
+	</div>
 </div>
 <div class="container24">
 		<section class="test1">
         	<c:if test="${not empty place }">
-        		<p style="font-size:30px; margin: 0 auto;
-          margin-right: 50px;">검색 결과</p>
+        		<p style="font-size:30px; margin: 0 auto; margin-right: 50px;">검색 결과(${totalData }개)</p>
         		<c:forEach items="${place}" var="p">
         			<div class="card">
 	        			<c:if test="${p.firstImage ne null }">
-	        				<img src="${p.firstImage }">
+	        				<img src="${p.firstImage }"class="img-fluid" height="300" width="300">
 	        			</c:if>
 	        			<c:if test="${p.firstImage eq null }">
-	        				<img src="resources/img/team/team-3.jpg" class="img-fluid"height="300" width="300"  alt="">
+	        				<img src="resources/img/team/team-3.jpg" class="img-fluid" height="300" width="300"  alt="">
 	        			</c:if>
 	            		<br>
 			            <p class="test3"><span ></span><br></p>
-			            <p class="test3"><span style="font-size: 18px; text-align: center;">${p.title}</span></p>
-			            <p class="test3"><span style="font-size: 12px;">${p.tel}</span></p>
+			            <p class="test3"><span style="font-size: 15px; text-align: center;"><b>${p.title}</b></span></p>
+			            <%-- <p class="test3"><span style="font-size: 12px;">${p.tel}</span></p> --%>
 		            </div>
 				</c:forEach>
 			</c:if>
@@ -162,6 +170,11 @@ $(function (){
 $(function (){
 	$("#btn_toggle3").click(function (){
   	$("#Toggle3").toggle();
+  });
+});
+$(function (){
+	$("#btn_toggle4").click(function (){
+  	$("#Toggle4").toggle();
   });
 });
 
@@ -376,6 +389,16 @@ let a;
 #Toggle3{
   font-size:14px;
 }
+#btn_toggle4{
+  font-size:14px;
+  padding:10px 15px;
+  border:1px solid #ddd;
+  border-radius:5px;
+  font-weight:bold;
+}
+#Toggle4{
+  font-size:14px;
+}
 #mainTema {
 	width: 120px;
 	height: 30px;
@@ -445,6 +468,7 @@ let a;
 	margin: 1.5%;
 	float: left;
 	align:center;
+	overflow:hidden;
 }
     
 .card img {

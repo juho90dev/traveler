@@ -4,7 +4,7 @@
 	<resultMap id="placeMap" type="place">
 		<id column="content_Id" property="contentId"/>
 		<result column="address" property="address"/>
-		<result column="areac" property="area"/>
+		<result column="area" property="area"/>
 		<result column="sigungu" property="sigungu"/>
 		<result column="main_Tema" property="mainTema"/>
 		<result column="sub_Tema" property="subTema"/>
@@ -17,25 +17,54 @@
 		<result column="overview" property="overview"/>
 	</resultMap>
 	
-	<!-- 지역검색 -->
-	<select id="searchPlace" resultMap="placeMap" parameterType="HashMap">
-		SELECT content_Id,address, area, sigungu, main_tema, sub_tema, contenttype_Id, first_Image, mapx, mapy, title, tel 
-			FROM PLACE 
-				WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema} AND AREA=#{area} AND SIGUNGU=#{sigungu}
-					ORDER BY TITLE
+	<!-- 통합 검색 -->
+	<select id="searchTotal" resultMap="placeMap" parameterType="HashMap">
+		SELECT  content_Id,address, area, sigungu, main_tema, sub_tema, contenttype_Id, first_Image, mapx, mapy, title, tel FROM PLACE WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema} AND AREA=#{area} AND SIGUNGU=#{sigungu}
 	</select>
-	<select id="searchPlaceCount" resultType="_int">
+
+	<select id="searchTotalCount" resultType="_int">
 		SELECT COUNT(*) FROM PLACE WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema} AND AREA=#{area} AND SIGUNGU=#{sigungu}
 	</select>
 	
+	<!-- 테마 검색 -->
 	
-	<select id="searchTest" parameterType="HashMap" resultMap="placeMap">
-		SELECT content_Id,address, area, sigungu, main_tema, sub_tema, contenttype_Id, first_Image, mapx, mapy, title, tel  FROM PLACE WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema} AND AREA=#{area} AND SIGUNGU=#{sigungu}
-
+	<select id="searchTema" resultMap="placeMap" parameterType="HashMap">
+		SELECT  content_Id,address, area, sigungu, main_tema, sub_tema, contenttype_Id, first_Image, mapx, mapy, title, tel FROM PLACE WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema}
 	</select>
 	
-	<select id="searchPlaceTest" resultMap="placeMap" parameterType="HashMap">
-		SELECT  content_Id,address, area, sigungu, main_tema, sub_tema, contenttype_Id, first_Image, mapx, mapy, title, tel FROM PLACE WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema} AND AREA=#{area} AND SIGUNGU=#{sigungu}
+	<select id="searchTemaCount" resultType="_int">
+		SELECT COUNT(*) FROM PLACE WHERE MAIN_TEMA=#{mainTema} AND SUB_TEMA=#{subTema}
+	</select>
+	
+	
+	<!-- 지역 검색 -->
+	
+	<select id="searchArea" resultMap="placeMap" parameterType="HashMap">
+		SELECT  content_Id,address, area, sigungu, main_tema, sub_tema, contenttype_Id, first_Image, mapx, mapy, title, tel FROM PLACE WHERE AREA=#{area} AND SIGUNGU=#{sigungu}
+	</select>
+	
+	<select id="searchAreaCount" resultType="_int">
+		SELECT COUNT(*) FROM PLACE WHERE AREA=#{area} AND SIGUNGU=#{sigungu}
+	</select>
+	
+	
+	<!-- 키워드 검색  -->
+	<select id="searchKeyword" resultMap="placeMap">
+		SELECT * FROM PLACE WHERE 
+			TITLE LIKE '%'||#{keyword}||'%'
+			OR AREA LIKE '%'||#{keyword}||'%'
+			OR SIGUNGU LIKE '%'||#{keyword}||'%'
+			OR MAIN_TEMA LIKE '%'||#{keyword}||'%'
+			OR SUB_TEMA LIKE '%'||#{keyword}||'%'
+	</select>
+	
+	<select id="searchKeywordCount" resultType="_int">
+		SELECT COUNT(*) FROM PLACE WHERE 
+			TITLE LIKE '%'||#{keyword}||'%'
+			OR AREA LIKE '%'||#{keyword}||'%'
+			OR SIGUNGU LIKE '%'||#{keyword}||'%'
+			OR MAIN_TEMA LIKE '%'||#{keyword}||'%'
+			OR SUB_TEMA LIKE '%'||#{keyword}||'%'
 	</select>
 	
 	<select id="placeParam" resultType="place" >

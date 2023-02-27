@@ -4,11 +4,11 @@ import java.util.Map;
 
 public class PlanPageBar {
 
-	public static String getPageBar(int cPage, int numPerpage, int totalData, String url, Map testP) {
+	public static String getPageBar(int cPage, int numPerpage, int totalData, String url, Map plan) {
 		String pageBar="";
-		
+		Boolean a = true;
 		int totalPage = (int)Math.ceil((double)totalData/numPerpage);
-		int pageBarSize=5;
+		int pageBarSize=10;
 		int pageNo = ((cPage-1)/pageBarSize)*pageBarSize+1;
 		int pageEnd = pageNo + pageBarSize-1;
 
@@ -49,7 +49,15 @@ public class PlanPageBar {
 		pageBar+="</ul>";
 		pageBar+="<script>";
 		pageBar+="function fn_paging(pageNo){";
-		pageBar+="location.href='"+url+"?mainTema="+testP.get("mainTema")+"&subTema="+testP.get("subTema")+"&area="+testP.get("area")+"&sigungu="+testP.get("sigungu")+"&cPage='+pageNo";
+		if(plan.size()==4) {
+			pageBar+="location.href='"+url+"?mainTema="+plan.get("mainTema")+"&subTema="+plan.get("subTema")+"&area="+plan.get("area")+"&sigungu="+plan.get("sigungu")+"&cPage='+pageNo";		
+		}else if(plan.size()==2 && plan.containsKey("mainTema")){
+			pageBar+="location.href='"+url+"?mainTema="+plan.get("mainTema")+"&subTema1="+plan.get("subTema")+"&cPage='+pageNo";
+		}else if(plan.size()==2 && plan.containsKey("area")) {
+			pageBar+="location.href='"+url+"?area="+plan.get("area")+"&sigungu1="+plan.get("sigungu")+"&cPage='+pageNo";
+		}else if(plan.size()==1) {
+			pageBar+="location.href='"+url+"?keyword="+plan.get("keyword")+"&cPage='+pageNo";
+		}
 		pageBar+="}";
 		pageBar+="</script>";
 		

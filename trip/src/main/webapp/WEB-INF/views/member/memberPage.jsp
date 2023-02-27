@@ -35,8 +35,13 @@
 								<h3>${member.userId}</h3>
 								<br>
 								<div class="image">
-									<img src="${path }/resources/upload/profile/${member.image }" width='300' height='300' alt="" class="profile" >
-					 				<!-- <img class="image" src="잠만보.jpeg" width='300' height='300'>  -->
+									<c:if test="${member.image ne null }">
+										<img src="/resources/upload/profile/${member.image }" height="300" width="300"  alt="">
+									</c:if>
+									<c:if test="${member.image eq null }">
+										<img src="/resources/img/team/team-3.jpg" class="img-fluid" height="300" width="300"  alt="">
+									</c:if>
+									<%-- <img src="${path }/resources/upload/profile/${member.image }" width='300' height='300' alt="" class="profile" > --%>
 								</div>
 								<br>
 								<br> <br> <br> <br>

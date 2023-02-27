@@ -4,7 +4,6 @@
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,9 +53,9 @@
 		<nav id="navbar" class="navbar">
 	        <ul>
 				<li><a class="active" href="/">Home</a></li>
-				<li><a href="${path}/plannerMember">플랜 크리에이터</a></li>
+				<li><a href="${path}/plannerMember" onclick="openPlanner();">플랜 크리에이터</a></li>
 				<li><a href="${path}/placeList">장소</a></li>
-				<li><a href="/">플랜</a></li>       
+				<li><a href="${path }/plan">플랜</a></li>       
 				<li class="dropdown"><a href="${path}/faq"><span>FAQ</span> <i class="bi bi-chevron-down"></i></a>
 					<ul>
 						<li><a href="${path}/notice">공지사항</a></li>
@@ -87,4 +86,5 @@
 		</nav><!-- .navbar -->
 	</div>
 </header><!-- End Header -->
+
 <main id="main">

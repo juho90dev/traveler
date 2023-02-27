@@ -39,11 +39,11 @@ public class PlaceController {
 
 
 	
-	// 장소 검색
+	// 통합 검색
 	
 	@RequestMapping("/searchPlace")
 	public ModelAndView searchResult(@RequestParam(defaultValue="1") int cPage,
-			@RequestParam(defaultValue="8") int numPerpage,@RequestParam("mainTema") String mainTema, @RequestParam("subTema") String subTema,
+			@RequestParam(defaultValue="12") int numPerpage,@RequestParam("mainTema") String mainTema, @RequestParam("subTema") String subTema,
 			@RequestParam("area") String area, @RequestParam("sigungu") String sigungu, ModelAndView mv, HttpServletRequest req) {
 
 		
@@ -61,7 +61,7 @@ public class PlaceController {
 		int totalData = 0;
 		
 		Map param = Map.of("cPage", cPage, "numPerpage", numPerpage);
-		Map<String,Object> testP = Map.of("mainTema",mainTema,"subTema",subTema,"area",area,"sigungu",sigungu);
+		Map<String,Object> totalP = Map.of("mainTema",mainTema,"subTema",subTema,"area",area,"sigungu",sigungu);
 		Map<String, Object> pData = new HashMap<>();
 		
 		pData.put("mainTema", mainTema);
@@ -76,9 +76,9 @@ public class PlaceController {
 		System.out.println(pData.get("mainTema"));
 		System.out.println("------------");
 		// 1. 오류1 페이징과 Map에 담아서 파라미터 전달하기 해결 : 오타였다.....하...
-		place = ps.searchPlaceTest(param,pData);
+		place = ps.searchTotal(param,pData);
 		// 파라미터 조건의 해당하는 지역의 총 갯수
-		totalData = ps.searchPlaceCount(pData);
+		totalData = ps.searchTotalCount(pData);
 		// 2. 오류2 Map이 아니라 객체에 담아서 전달해보기
 //		place = ps.searchPlace(param,p);
 		// 3. 그냥 Map만 전달하기. -> 테이블에 값이 들어가 있음에도 null이 나온다......
@@ -102,29 +102,115 @@ public class PlaceController {
 		System.out.println(url);
 		
 		mv.addObject("place",place);
-		mv.addObject("pageBar", PlanPageBar.getPageBar(cPage, numPerpage, totalData, "/searchPlace", testP));
+		mv.addObject("pageBar", PlanPageBar.getPageBar(cPage, numPerpage, totalData, "/searchPlace", totalP));
+		mv.addObject("totalData", totalData);
+		mv.setViewName("place/placeList");
+		return mv;
+	}
+	
+	// 테마 검색
+	@RequestMapping("/searchTema")
+	public ModelAndView searchTema(ModelAndView mv, @RequestParam(defaultValue="1") int cPage,
+			@RequestParam(defaultValue="12") int numPerpage,@RequestParam("mainTema") String mainTema, @RequestParam("subTema1") String subTema) {
+		
+		System.out.println(subTema);
+		System.out.println(mainTema);
+		
+		List<Place> place = new ArrayList();
+		int totalData = 0;
+		Map param = Map.of("cPage", cPage, "numPerpage", numPerpage);
+		Map<String,Object> temaP = Map.of("mainTema",mainTema,"subTema",subTema);
+		Map<String, Object> pData = new HashMap<>();
+		pData.put("mainTema", mainTema);
+		pData.put("subTema", subTema);
+		
+		
+		System.out.println("param : "+param);
+		System.out.println("------------");
+		System.out.println("Map에 담음 : "+pData);
+		System.out.println(pData.get("mainTema"));
+		System.out.println("------------");
+		
+		
+		
+		
+		place = ps.searchTema(param,pData);
+		totalData = ps.searchTemaCount(pData);
+		
+		for(int i=0;i<place.size();i++) {
+			System.out.println(place.get(i));
+		}
+		
+		System.out.println("------------");
+		System.out.println(totalData);
+		System.out.println("------------");
+		mv.addObject("place",place);
+		mv.addObject("pageBar", PlanPageBar.getPageBar(cPage, numPerpage, totalData, "/searchTema", temaP));
 		mv.addObject("totalData", totalData);
 		mv.setViewName("place/placeList");
 		return mv;
 	}
 	
 	
-	// 장소 검색 페이지
+	// 장소 검색
+	@RequestMapping("/searchArea")
+	public ModelAndView searchArea(ModelAndView mv, @RequestParam(defaultValue="1") int cPage,
+			@RequestParam(defaultValue="12") int numPerpage,@RequestParam("area") String area, @RequestParam("sigungu1") String sigungu) {
+		
+		List<Place> place = new ArrayList();
+		int totalData = 0;
+		Map param = Map.of("cPage", cPage, "numPerpage", numPerpage);
+		Map<String,Object> areaP = Map.of("area",area,"sigungu",sigungu);
+		Map<String, Object> pData = new HashMap<>();
+		pData.put("area", area);
+		pData.put("sigungu", sigungu);
+		
+		place = ps.searchArea(param, pData);
+		totalData = ps.searchAreaCount(pData);
+	
+		mv.addObject("place",place);
+		mv.addObject("pageBar", PlanPageBar.getPageBar(cPage, numPerpage, totalData, "/searchArea", areaP));
+		mv.addObject("totalData", totalData);
+		mv.setViewName("place/placeList");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping("/searchKeyword")
+	public ModelAndView searchKeyword(ModelAndView mv, @RequestParam(defaultValue="1") int cPage,
+			@RequestParam(defaultValue="12") int numPerpage,@RequestParam("keyword") String keyword) {
+		
+		List<Place> place = new ArrayList();
+		int totalData = 0;
+		Map param = Map.of("cPage", cPage, "numPerpage", numPerpage);
+		Map<String,Object> areaP = Map.of("keyword",keyword);
+		
+		place = ps.searchKeyword(param, keyword);
+		totalData = ps.searchKeywordCount(keyword);
+		
+		mv.addObject("place",place);
+		mv.addObject("pageBar", PlanPageBar.getPageBar(cPage, numPerpage, totalData, "/searchKeyword", areaP));
+		mv.addObject("totalData", totalData);
+		mv.setViewName("place/placeList");
+		return mv;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	// 테스트페이지
 	@RequestMapping("/testPlace")
 	public String testplate() {
 		
 		return "place/testPlace";
 	}
 	
-	
-	@RequestMapping("/searchTema")
-	public String searchKeyword(@RequestParam("mainTema") String mainTema,@RequestParam("subTema1") String subTema) {
-		
-		System.out.println(mainTema);
-		System.out.println(subTema);
-		
-		return "place/placeList";
-	}
+
 	
 
 }
