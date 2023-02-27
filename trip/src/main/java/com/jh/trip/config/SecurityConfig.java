@@ -33,7 +33,7 @@ public class SecurityConfig {
 					.authorizeRequests() // 인증 권한 설정 
 					.antMatchers("/plannerMember","/plan","/inquiryList","/boardList","/report").hasAnyRole("USER","ADMIN")
 		            
-					.antMatchers("/","/joinForm","/plannerMember","/**","/resources/**").permitAll()
+					.antMatchers("/","/joinForm","/**","/resources/**").permitAll()
 					.anyRequest().authenticated()
 				.and()
 				.logout()
