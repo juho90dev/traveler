@@ -13,13 +13,22 @@ body {
   color: #444444;
 }
 
-a {
+/* a {
   color: #94c045;
   text-decoration: none;
 }
 
 a:hover {
   color: #aacd6b;
+  text-decoration: none;
+} */
+a {
+  color: #6571a3;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #003476;
   text-decoration: none;
 }
 
@@ -158,12 +167,12 @@ h6 {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #94c045;
+  color: #003476;
 }
 
 .navbar .getstarted,
 .navbar .getstarted:focus {
-  background: #94c045;
+  background: #003476;
   padding: 8px 25px;
   margin-left: 30px;
   border-radius: 50px;
@@ -491,6 +500,11 @@ section {
   background: #94c045;
   padding: 20px 0;
   color: #fff;
+}
+.breadcrumbs .breadcrumb-hero{
+  background-image: url(../img/trip-bg.jpg);
+  background-repeat: no repeat;
+  background-size: cover;
 }
 
 .breadcrumbs .breadcrumb-hero h2 {
@@ -1533,19 +1547,19 @@ section {
 
 .btn-primary {
     --bs-btn-color: #fff;
-    --bs-btn-bg: #94c045;
-    --bs-btn-border-color: #94c045;
+    --bs-btn-bg: #6571a3;
+    --bs-btn-border-color: #6571a3;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #aacd6b;
-    --bs-btn-hover-border-color: #aacd6b;
+    --bs-btn-hover-bg: #003476;
+    --bs-btn-hover-border-color: #003476;
     --bs-btn-focus-shadow-rgb: 49,132,253;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #aacd6b;
-    --bs-btn-active-border-color: #aacd6b;
+    --bs-btn-active-bg: #003476;
+    --bs-btn-active-border-color: #003476;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #94c045;
-    --bs-btn-disabled-border-color: #94c045;
+    --bs-btn-disabled-bg: #6571a3;
+    --bs-btn-disabled-border-color: #6571a3;
 }
 
 
@@ -1682,7 +1696,7 @@ section {
   text-transform: uppercase;
   font-weight: 400;
   margin-bottom: 15px;
-  color: #94c045;
+  color: #003476;
 }
 
 .team .member .member-info p {
@@ -2232,7 +2246,7 @@ section {
   line-height: 1;
   font-weight: 600;
   letter-spacing: 3px;
-  color: #9fc658;
+/*   color: #003476; */
 }
 
 #footer .footer-top .footer-info p {
@@ -2265,7 +2279,7 @@ section {
 }
 
 #footer .footer-top .social-links a:hover {
-  background: #94c045;
+  background: #003476;
   color: #fff;
   text-decoration: none;
 }
@@ -2294,7 +2308,7 @@ section {
 }
 
 #footer .footer-top h4::after {
-  background: #94c045;
+  background: #fff;
   width: 60px;
 }
 

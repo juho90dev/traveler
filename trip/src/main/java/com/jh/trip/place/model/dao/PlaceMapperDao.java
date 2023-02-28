@@ -18,15 +18,7 @@ public class PlaceMapperDao {
 	public List<Place> searchTotal(SqlSessionTemplate session,Map param, Map<String, Object> pData) {
 		int offset = (int)param.get("cPage");
 		int limit = (int)param.get("numPerpage");
-		System.out.println("Dao!!!!!");
-		System.out.println(pData.get("area"));
-		System.out.println(pData.get("sigungu"));
-		System.out.println(pData.get("mainTema"));
-		System.out.println(pData.get("subTema"));
-		System.out.println("------------");
-		System.out.println(param);
 		return session.selectList("place.searchTotal",pData, new RowBounds((offset-1)*limit,limit));
-		// return null;
 	}
 	
 	

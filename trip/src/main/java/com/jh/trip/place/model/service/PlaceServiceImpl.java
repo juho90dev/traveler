@@ -28,13 +28,6 @@ public class PlaceServiceImpl implements PlaceService {
 	// 통합 검색
 	@Override 
 	public List<Place> searchTotal(Map param, Map<String, Object> pData) { 
-		System.out.println("Service!!!!!");
-		System.out.println(pData.get("area"));
-		System.out.println(pData.get("sigungu"));
-		System.out.println(pData.get("mainTema"));
-		System.out.println(pData.get("subTema"));
-		System.out.println("------------");
-		System.out.println(param);
 		return pmdao.searchTotal(session,param, pData);
 	}
 	
@@ -77,6 +70,14 @@ public class PlaceServiceImpl implements PlaceService {
 	@Override
 	public int searchKeywordCount(String keyword) {
 		return pmdao.searchKeywordCount(session, keyword);
+	}
+	
+	
+	// 장소 상세정보
+	
+	@Override
+	public Place selectPlace(String id) {
+		return pdao.findByContentId(id);
 	}
 	
 }

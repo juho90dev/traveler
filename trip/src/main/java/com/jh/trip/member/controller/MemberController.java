@@ -355,10 +355,10 @@ public class MemberController {
 			totalData = service.searchMemberEmailCount(keyword);
 		}
 		
-		
+		Map<String,Object> mList = Map.of("searchType",searchType,"keyword",keyword);
 		
 		mv.addObject("member", member);
-		mv.addObject("pageBar", PageBar.getPageBar(cPage, numPerpage, totalData, "memberList"));
+		mv.addObject("pageBar", PageBar.searchPageBar(cPage, numPerpage, totalData, "/searchMember", mList ));
 		mv.addObject("totalData", totalData);
 		mv.setViewName("admin/memberList");
 		return mv;

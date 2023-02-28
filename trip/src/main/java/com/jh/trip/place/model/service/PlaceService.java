@@ -23,6 +23,9 @@ public interface PlaceService {
 	List<Place> searchKeyword(Map param, String keyword);
 	int searchKeywordCount(String keyword);
 	
+	// 장소 상세정보
+	Place selectPlace(String id);
+	
 
 	
 

@@ -11,7 +11,6 @@
 		<div class="container">
 			<div class="breadcrumb-hero">
 				<h2>Contact</h2>
-            	<p>허위로 신고할 경우 불이익을 당할 수 있습니다. 신중히 해주세요.</p>
 			</div>
 		</div>
 	</div>

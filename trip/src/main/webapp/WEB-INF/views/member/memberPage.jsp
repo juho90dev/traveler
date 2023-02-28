@@ -36,7 +36,7 @@
 								<br>
 								<div class="image">
 									<c:if test="${member.image ne null }">
-										<img src="/resources/upload/profile/${member.image }" height="300" width="300"  alt="">
+										<img src="/resources/upload/profile/${member.image }" class="profile" height="300" width="300"  alt="">
 									</c:if>
 									<c:if test="${member.image eq null }">
 										<img src="/resources/img/team/team-3.jpg" class="img-fluid" height="300" width="300"  alt="">
@@ -76,9 +76,11 @@
 					<h3 class="sidebar-title">Categories</h3>
 					<div class="sidebar-item categories">
 		                <ul>
-		                  <li><a href="${path }/planList">${member.userId }님의 플랜 </a></li>
-		                  <li><a href="/request/${member.userId}">${member.userId }님에게 플랜 요청하기</a></li>
-		                  <li><a href="#">${member.userId }님을 신고하기 <span>(8)</span></a></li>
+		                	<li><a href="${path }/planList">${member.userId }님의 플랜 </a></li>
+		                	<c:if test="${member.userId ne loginMember.userId }">
+		                  		<li><a href="/request/${member.userId}">${member.userId }님에게 플랜 요청하기</a></li>
+		                  	</c:if>
+		                  	<li><a href="#">${member.userId }님을 신고하기 <span>(8)</span></a></li>
 		                </ul>
 					</div><!-- End sidebar categories-->
 				</div><!-- End sidebar recent posts-->

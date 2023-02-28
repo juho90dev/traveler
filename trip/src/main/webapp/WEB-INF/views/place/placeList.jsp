@@ -10,6 +10,7 @@
 	<div class="breadcrumb-hero">
 		<div class="breadcrumb-hero">
 			<h2>검색</h2>
+			<p>다양하게 검색해 보세요.</p>
 		</div>
 	</div>
 <%-- 	<div class="container">
@@ -64,7 +65,7 @@
 					<option value="전라북도">전라북도</option>
 					<option value="전라남도">전라남도</option>
 					<option value="광주">광주</option>
-					<option value="제주">제주</option>
+					<option value="제주도">제주도</option>
 				</select>
 				<select name="sigungu" id="sigungu">
 					<option value="sigundo">시/군/구</option>
@@ -114,7 +115,7 @@
 					<option value="전라북도">전라북도</option>
 					<option value="전라남도">전라남도</option>
 					<option value="광주">광주</option>
-					<option value="제주">제주</option>
+					<option value="제주도">제주도</option>
 				</select>
 				<select name="sigungu1" id="sigungu1">
 					<option value="sigundo">시/군/구</option>
@@ -139,10 +140,14 @@
         		<c:forEach items="${place}" var="p">
         			<div class="card">
 	        			<c:if test="${p.firstImage ne null }">
-	        				<img src="${p.firstImage }"class="img-fluid" height="300" width="300">
+	        				<a href="${path }/placeView/${p.contentId }">
+	        					<img src="${p.firstImage }"class="img-fluid" height="300" width="300">
+	        				</a>
 	        			</c:if>
 	        			<c:if test="${p.firstImage eq null }">
-	        				<img src="resources/img/team/team-3.jpg" class="img-fluid" height="300" width="300"  alt="">
+	        				<a href="${path }/placeView/${p.contentId }">
+	        					<img src="resources/img/team/team-3.jpg" class="img-fluid" height="300" width="300"  alt="">
+	        				</a>
 	        			</c:if>
 	            		<br>
 			            <p class="test3"><span ></span><br></p>
@@ -150,6 +155,9 @@
 			            <%-- <p class="test3"><span style="font-size: 12px;">${p.tel}</span></p> --%>
 		            </div>
 				</c:forEach>
+			</c:if>
+			<c:if test="${empty place }">
+				<p style="font-size:30px; margin: 0 auto; margin-right: 50px;">조회 결과 없음</p>
 			</c:if>
 		</section>
 	</div> 
@@ -268,7 +276,7 @@ let d;
       const 전라남도 = ["강진군", "고흥군", "곡성군", "광양시", "구례군", "나주시", "담양군", "목포시", "무안군", "보성군", "순천시", "신안군", "여수시", "영광군", "영암군", "완도군", "장성군", "장흥군", "진도군", "함평군", "해남군", "화순군"];
       const 광주 = ["광산구", "남구", "동구", "북구", "서구"];
 
-      const 제주 = ["남제주군", "북제주군", "서귀포시", "제주시"];
+      const 제주도 = ["남제주군", "북제주군", "서귀포시", "제주시"];
 
       const target = document.getElementById("sigungu");
 
@@ -288,7 +296,7 @@ let d;
       else if (e.value == "전라북도") d = 전라북도;
       else if (e.value == "전라남도") d = 전라남도;
       else if (e.value == "광주") d = 광주;
-      else if (e.value == "제주") d = 제주;
+      else if (e.value == "제주도") d = 제주도;
 
       target.options.length = 0;
 
@@ -324,7 +332,7 @@ let a;
       const 전라남도 = ["강진군", "고흥군", "곡성군", "광양시", "구례군", "나주시", "담양군", "목포시", "무안군", "보성군", "순천시", "신안군", "여수시", "영광군", "영암군", "완도군", "장성군", "장흥군", "진도군", "함평군", "해남군", "화순군"];
       const 광주 = ["광산구", "남구", "동구", "북구", "서구"];
 
-      const 제주 = ["남제주군", "북제주군", "서귀포시", "제주시"];
+      const 제주도 = ["남제주군", "북제주군", "서귀포시", "제주시"];
 
       const target = document.getElementById("sigungu1");
 
@@ -344,7 +352,7 @@ let a;
       else if (e.value == "전라북도") d = 전라북도;
       else if (e.value == "전라남도") d = 전라남도;
       else if (e.value == "광주") d = 광주;
-      else if (e.value == "제주") d = 제주;
+      else if (e.value == "제주도") d = 제주도;
 
       target.options.length = 0;
 
