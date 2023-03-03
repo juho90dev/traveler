@@ -99,6 +99,7 @@
 	</div>
 </section>
 <script>
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -108,7 +109,11 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
+//일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+var mapTypeControl = new kakao.maps.MapTypeControl();
 
+// 지도 타입 컨트롤을 지도에 표시합니다
+map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
 var geocoder = new kakao.maps.services.Geocoder();
 
@@ -118,23 +123,114 @@ geocoder.addressSearch('${place.address}', function(result, status) {
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
 
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
+         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+/*
         // 결과값으로 받은 위치를 마커로 표시합니다
         var marker = new kakao.maps.Marker({
             map: map,
             position: coords
         });
+        
+     // 마커가 표시될 위치입니다 
+        var markerPosition  = new kakao.maps.LatLng(result[0].y, result[0].x); 
 
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-            /* content: '<div style="width:150px;text-align:center;padding:6px 0;"></div>' */
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            position: markerPosition
         });
-     /*    infowindow.open(map, marker); */
+
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map);
+ */
+     // HTML 문자열 또는 Dom Element 입니다
+        var content = '<div class="overlay_info">';
+        content += '    <a href="https://map.kakao.com/"><strong>${place.title}</strong></a>';
+        content += '    <div class="desc">';
+        content += '        <img src="${place.firstImage}" style="height:50px; width:50px;" alt="">';
+        content += '        <span class="address">${place.address}</span>';
+        content += '    </div>';
+        content += '</div>';
+
+        // 커스텀 오버레이가 표시될 위치입니다 
+        var position = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 커스텀 오버레이를 생성합니다
+        var mapCustomOverlay = new kakao.maps.CustomOverlay({
+            position: position,
+            content: content,
+            xAnchor: 0.5, // 커스텀 오버레이의 x축 위치입니다. 1에 가까울수록 왼쪽에 위치합니다. 기본값은 0.5 입니다
+            yAnchor: 1.1 // 커스텀 오버레이의 y축 위치입니다. 1에 가까울수록 위쪽에 위치합니다. 기본값은 0.5 입니다
+        });
+
+        // 커스텀 오버레이를 지도에 표시합니다
+        mapCustomOverlay.setMap(map);
+        
+/*         // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+        content: '<div style="width:150px;text-align:center;padding:6px 0; border:1px solid blue"><b>${place.title}</b></div>'
+        });
+        infowindow.open(map, marker); */
 
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
     } 
 }); 
 </script>
+<style>
+.overlay_info {
+	border-radius: 6px;
+	margin-bottom: 12px;
+	float:left;
+	position:relative;
+	border: 1px solid blue;
+	border-bottom: 1px solid blue;
+	background-color:#ffff;
+}
+.overlay_info:nth-of-type(n) {
+	border:0;
+	box-shadow: 0px 1px 2px #888;
+}
+.overlay_info a {
+	display: block;
+	background: #d95050;
+	background: #green  no-repeat right 14px center;
+	text-decoration: none;
+	color: #fff;
+	padding:12px 36px 12px 14px;
+	font-size: 14px;
+	border-radius: 6px 6px 0 0;
+	text-align:center;
+	background-color:green;
+}
+
+.overlay_info .desc {
+	padding:18px;
+	margin-bottom:30px;
+	position: relative;
+	min-width: 190px;
+	height: 56px
+}
+.overlay_info img {
+	vertical-align: top;
+}
+.overlay_info .address {
+	font-size: 12px;
+	color: #333;
+	position: absolute;
+	left: 80px;
+	right: 14px;
+	top: 24px;
+	white-space: normal
+}
+.overlay_info:after {
+	content:'';
+	position: absolute;
+	margin-left: -11px;
+	left: 50%;
+	bottom: -12px;
+	width: 22px;
+	height: 12px;
+	background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;
+}
+</style>
  <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
