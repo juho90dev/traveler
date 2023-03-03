@@ -135,18 +135,18 @@
 </div>
 <div class="container24">
 		<section class="test1">
-        	<c:if test="${not empty place }">
+        	<c:if test="${place ne null }">
         		<p style="font-size:30px; margin: 0 auto; margin-right: 50px;">검색 결과(${totalData }개)</p>
         		<c:forEach items="${place}" var="p">
-        			<div class="card">
-	        			<c:if test="${p.firstImage ne null }">
+        			<div class="card" style="border: 1px solid black;">
+	        			<c:if test="${p.firstImage ne null }" >
 	        				<a href="${path }/placeView/${p.contentId }">
-	        					<img src="${p.firstImage }"class="img-fluid" height="300" width="300">
+	        					<img src="${p.firstImage }"class="img-fluid" height="300" width="300" style="border-bottom: 1px solid black;">
 	        				</a>
 	        			</c:if>
 	        			<c:if test="${p.firstImage eq null }">
 	        				<a href="${path }/placeView/${p.contentId }">
-	        					<img src="resources/img/team/team-3.jpg" class="img-fluid" height="300" width="300"  alt="">
+	        					<img src="${path }/resources/img/basicImg.png" class="img-fluid" height="300" width="300"  style="border-bottom: 1px solid black;">
 	        				</a>
 	        			</c:if>
 	            		<br>
@@ -156,8 +156,8 @@
 		            </div>
 				</c:forEach>
 			</c:if>
-			<c:if test="${empty place }">
-				<p style="font-size:30px; margin: 0 auto; margin-right: 50px;">조회 결과 없음</p>
+			<c:if test="${place eq null }">
+				<p style="font-size:30px; margin: 0 auto; margin-right: 50px;"><img src="${path }/resources/img/basicImg.png" class="img-fluid" height="300" width="300"  ></p>
 			</c:if>
 		</section>
 	</div> 
@@ -453,7 +453,7 @@ let a;
     padding:10px 15px;
     border-radius:5px;
     margin: 0 auto;
-          margin-top: 10px;
+    margin-top: 10px;
 }
 
 .test2 {
