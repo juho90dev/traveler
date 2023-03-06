@@ -9,7 +9,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -21,7 +21,7 @@
 
   <!-- Favicons -->
   <link href="${pageContext.request.contextPath}/resources/img/favicon.png" rel="icon">
-  <link href="${pageContext.request.contextPath}/resources/img/apple-touch-icon.png" rel="apple-touch-icon">
+ <%--  <link href="${pageContext.request.contextPath}/resources/img/apple-touch-icon.png" rel="apple-touch-icon"> --%>
 <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="${path}/resources/vendor/font-awesome/css/font-awesome.min.css">
   <!-- Google Fonts -->
