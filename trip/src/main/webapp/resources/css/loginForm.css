@@ -1,165 +1,163 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css?family=Montserrat:600|Noto+Sans|Open+Sans:400,700&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
 *{
-  margin: 0;
-  padding: 0;
-  border-radius: 5px;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
 }
-body{
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  font-family: sans-serif;
-  justify-content: center;
- 
-  background-size: cover;
-  background-position: center;
+.bg-img{
+	background: url(../img/trip-bg.jpg);
+	height: 100vh;
+	background-size: cover;
+	background-position: center;
 }
-.container{
-  position: relative;
-  width: 400px;
-  background: white;
-  padding: 60px 40px;
+.bg-img:after{
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,0.7);
 }
-header{
-  font-size: 40px;
-  margin-bottom: 60px;
-  font-family: 'Montserrat', sans-serif;
+.content{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 999;
+	text-align: center;
+	padding: 60px 32px;
+	width: 370px;
+	transform: translate(-50%,-50%);
+	background: rgba(255,255,255,0.04);
+	box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
 }
-.input-field, form .button{
-  margin: 25px 0;
-  position: relative;
-  height: 50px;
-  width: 100%;
+.content header{
+	color: white;
+	font-size: 33px;
+	font-weight: 600;
+	margin: 0 0 35px 0;
+	font-family: 'Montserrat',sans-serif;
 }
-.input-field input{
-  height: 100%;
-  width: 100%;
-  border: 1px solid silver;
-  padding-left: 15px;
-  outline: none;
-  font-size: 19px;
-  transition: .4s;
+.field{
+	position: relative;
+	height: 45px;
+	width: 100%;
+	display: flex;
+	background: rgba(255,255,255,0.94);
 }
-input:focus{
-  border: 1px solid #1DA1F2;
+.field span{
+	color: #222;
+	width: 40px;
+	line-height: 45px;
 }
-.input-field label, span.show{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.field input{
+	height: 100%;
+	width: 100%;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: #222;
+	font-size: 16px;
+	font-family: 'Poppins',sans-serif;
 }
-.input-field label{
-  left: 15px;
-  pointer-events: none;
-  color: grey;
-  font-size: 18px;
-  transition: .4s;
+.space{
+	margin-top: 16px;
 }
-span.show{
-  right: 20px;
-  color: #111;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  user-select: none;
-  visibility: hidden;
-  font-family: 'Open Sans', sans-serif;
+.show{
+	position: absolute;
+	right: 13px;
+	font-size: 13px;
+	font-weight: 700;
+	color: #222;
+	display: none;
+	cursor: pointer;
+	font-family: 'Montserrat',sans-serif;
 }
-input:valid ~ span.show{
-  visibility: visible;
+.pass-key:valid ~ .show{
+	display: block;
 }
-input:focus ~ label,
-input:valid ~ label{
-  transform: translateY(-33px);
-  background: white;
-  font-size: 16px;
-  color: #1DA1F2;
+.pass{
+	text-align: left;
+	margin: 10px 0;
 }
-form .button{
-  margin-top: 30px;
-  overflow: hidden;
-  z-index: 111;
+.pass a{
+	color: white;
+	text-decoration: none;
+	font-family: 'Poppins',sans-serif;
 }
-.button .inner{
-  position: absolute;
-  height: 100%;
-  width: 300%;
-  left: -100%;
-  z-index: -1;
-  transition: all .4s;
-  background: -webkit-linear-gradient(right,#00dbde,#fc00ff,#00dbde,#fc00ff);
+.pass:hover a{
+	text-decoration: underline;
 }
-.button:hover .inner{
-  left: 0;
+.field input[type="submit"]{
+	background: #3498db;
+	border: 1px solid #2691d9;
+	color: white;
+	font-size: 18px;
+	letter-spacing: 1px;
+	font-weight: 600;
+	cursor: pointer;
+	font-family: 'Montserrat',sans-serif;
 }
-.button button{
-  width: 100%;
-  height: 100%;
-  border: none;
-  background: none;
-  outline: none;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
+.field input[type="submit"]:hover{
+	background: #2691d9;
 }
-.container .auth{
-  margin: 35px 0 20px 0;
-  font-size: 19px;
-  color: grey;
+.login{
+	color: white;
+	margin: 20px 0;
+	font-family: 'Poppins',sans-serif;
 }
 .links{
-  display: flex;
-  cursor: pointer;
+	display: flex;
+	cursor: pointer;
+	color: white;
+	margin: 0 0 20px 0;
 }
-/*
-.facebook, .google{
-  height: 40px;
-  width: 100%;
-  border: 1px solid silver;
-  border-radius: 3px;
-  margin: 0 10px;
-  transition: .4s;
+.facebook,.instagram{
+	width: 100%;
+	height: 45px;
+	line-height: 45px;
+	margin-left: 10px;
 }
-*/
-.kakao{
-  width:100%;
+.facebook{
+	margin-left: 0;
+	background: #4267B2;
+	border: 1px solid #3e61a8;
+}
+.instagram{
+	background: #E1306C;
+	border: 1px solid #df2060;
 }
 .facebook:hover{
-  border: 1px solid #4267B2;
+	background: #3e61a8;
 }
-.google:hover{
-  border: 1px solid #dd4b39;
-}
-.facebook i, .facebook span{
-  color: #4267B2;
-}
-.google i, .google span{
-  color: #dd4b39;
+.instagram:hover{
+	background: #df2060;
 }
 .links i{
-  font-size: 23px;
-  line-height: 40px;
-  margin-left: -90px;
+	font-size: 17px;
 }
-.links span{
-  position: absolute;
-  font-size: 17px;
-  font-weight: bold;
-  padding-left: 8px;
-  font-family: 'Open Sans', sans-serif;
+i span{
+	margin-left: 8px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	font-size: 16px;
+	font-family: 'Poppins',sans-serif;
 }
 .signup{
-  margin-top: 50px;
-  font-family: 'Noto Sans', sans-serif;
+	font-size: 15px;
+	color: #003476;
+	font-family: 'Poppins',sans-serif;
 }
 .signup a{
-  color: #3498db;
-  text-decoration: none;
+	color: white;
+	text-decoration: none;
 }
 .signup a:hover{
-  text-decoration: underline;
+	text-decoration: underline;
+	color: 3498db;
+}
+.colorS{
+	color: 3498db;
 }

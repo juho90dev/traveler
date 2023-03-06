@@ -49,9 +49,9 @@ public class MemberController {
 	}
 	
 	//최종 회원가입 페이지
-	@RequestMapping(value="/joinForm", method = RequestMethod.GET)
+	@RequestMapping(value="/joinPage", method = RequestMethod.GET)
 	public String test() {
-		return "member/joinForm";
+		return "member/joinPage";
 	}
 	
 	// 회원 리스트 

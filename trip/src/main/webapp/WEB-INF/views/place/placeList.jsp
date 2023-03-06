@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/memberList.css"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 
@@ -13,127 +12,119 @@
 			<p>다양하게 검색해 보세요.</p>
 		</div>
 	</div>
-<%-- 	<div class="container">
-		<ol>
-			<li><a href="<%=request.getContextPath()%>/">Home</a></li>
-			<li><a href="<%=request.getContextPath()%>/testPlace">검색</a></li>
-		</ol>
-	</div> --%>
 </section>
 <section id="about" class="about">
-   
-<br>
- <div id="search-option-container" style="text-align:left;"> 
-	<button id="btn_toggle2" class="btn btn-primary">테마 검색</button>
-	<button id="btn_toggle3" class="btn btn-primary">지역 검색</button>
-	<button id="btn_toggle4" class="btn btn-primary">키워드 검색</button>
-	<button id="btn_toggle1" class="btn btn-primary">통합 검색</button>
-</div>
-
-<div>
-	<div id="Toggle1"  style="display:none; text-align:center">
-		<form action="${pageContext.request.contextPath }/searchPlace" method="get">
-			<div class="travel1">
-				<select name="mainTema" id="mainTema" onchange="change(this)">
-					<option value="tematitle">테마 선택</option>
-					<option value="자연">자연</option>
-					<option value="인문(문화/예술/역사)">인문(문화/예술/역사)</option>
-					<option value="추천코스">추천코스</option>
-					<option value="레포츠">레포츠</option>
-					<option value="숙박">숙박</option>
-					<option value="쇼핑">쇼핑</option>
-					<option value="음식">음식</option>
-				</select>
-				<select name="subTema" id="subTema">
-					<option value="subtematitle">상세테마 선택</option>
-				</select>
-				<select name="area" id="area" onchange="areachange(this)">
-					<option value="sigun">시/도 선택</option>
-					<option value="서울">서울</option>
-					<option value="인천">인천</option>
-					<option value="경기도">경기도</option>
-					<option value="강원도">강원도</option>
-					<option value="충청북도">충청북도</option>
-					<option value="충청남도">충청남도</option>
-					<option value="대전">대전</option>
-					<option value="세종">세종</option>
-					<option value="경상북도">경상북도</option>
-					<option value="경상남도">경상남도</option>
-					<option value="대구">대구</option>
-					<option value="울산">울산</option>
-					<option value="부산">부산</option>
-					<option value="전라북도">전라북도</option>
-					<option value="전라남도">전라남도</option>
-					<option value="광주">광주</option>
-					<option value="제주도">제주도</option>
-				</select>
-				<select name="sigungu" id="sigungu">
-					<option value="sigundo">시/군/구</option>
-				</select>
+	<br>
+	<div id="search-option-container" style="text-align:left;">
+		<button id="btn_toggle2" class="btn btn-primary">테마 검색</button>
+		<button id="btn_toggle3" class="btn btn-primary">지역 검색</button>
+		<button id="btn_toggle4" class="btn btn-primary">키워드 검색</button>
+		<button id="btn_toggle1" class="btn btn-primary">통합 검색</button>
+	</div>
+	<div>
+		<div id="Toggle1"  style="display:none; text-align:center">
+			<form action="${pageContext.request.contextPath }/searchPlace" method="get">
+				<div class="travel1">
+					<select name="mainTema" id="mainTema" onchange="change(this)">
+						<option value="tematitle">테마 선택</option>
+						<option value="자연">자연</option>
+						<option value="인문(문화/예술/역사)">인문(문화/예술/역사)</option>
+						<option value="추천코스">추천코스</option>
+						<option value="레포츠">레포츠</option>
+						<option value="숙박">숙박</option>
+						<option value="쇼핑">쇼핑</option>
+						<option value="음식">음식</option>
+					</select>
+					<select name="subTema" id="subTema">
+						<option value="subtematitle">상세테마 선택</option>
+					</select>
+					<select name="area" id="area" onchange="areachange(this)">
+						<option value="sigun">시/도 선택</option>
+						<option value="서울">서울</option>
+						<option value="인천">인천</option>
+						<option value="경기도">경기도</option>
+						<option value="강원도">강원도</option>
+						<option value="충청북도">충청북도</option>
+						<option value="충청남도">충청남도</option>
+						<option value="대전">대전</option>
+						<option value="세종">세종</option>
+						<option value="경상북도">경상북도</option>
+						<option value="경상남도">경상남도</option>
+						<option value="대구">대구</option>
+						<option value="울산">울산</option>
+						<option value="부산">부산</option>
+						<option value="전라북도">전라북도</option>
+						<option value="전라남도">전라남도</option>
+						<option value="광주">광주</option>
+						<option value="제주도">제주도</option>
+					</select>
+					<select name="sigungu" id="sigungu">
+						<option value="sigundo">시/군/구</option>
+					</select>
+					<button type="submit" class="btn btn-primary">검색</button>
+				</div>
+			</form>
+		</div>
+		<div id="Toggle2"  style="display:none; text-align:center">
+			<form id="search" action="${path }/searchTema" method="get">
+				<div class="travel1">
+					<select name="mainTema" id="mainTema" onchange="changeT(this)">
+						<option value="tematitle1">테마 선택</option>
+						<option value="자연">자연</option>
+						<option value="인문(문화/예술/역사)">인문(문화/예술/역사)</option>
+						<option value="추천코스">추천코스</option>
+						<option value="레포츠">레포츠</option>
+						<option value="숙박">숙박</option>
+						<option value="쇼핑">쇼핑</option>
+						<option value="음식">음식</option>
+					</select>
+					<select name="subTema1" id="subTema1">
+						<option value="subtematitle">상세테마 선택</option>
+					</select>
+					<button type="submit" class="btn btn-primary">검색</button>
+				</div>
+			</form>
+		</div>
+		<div id="Toggle3"  style="display:none; text-align:center">
+			<form action="${path }/searchArea">
+				<div class="citytravel1">
+					<select name="area" id="area" onchange="changeA(this)">
+						<option value="sigun1">시/도 선택</option>
+						<option value="서울">서울</option>
+						<option value="인천">인천</option>
+						<option value="경기도">경기도</option>
+						<option value="강원도">강원도</option>
+						<option value="충청북도">충청북도</option>
+						<option value="충청남도">충청남도</option>
+						<option value="대전">대전</option>
+						<option value="세종">세종</option>
+						<option value="경상북도">경상북도</option>
+						<option value="경상남도">경상남도</option>
+						<option value="대구">대구</option>
+						<option value="울산">울산</option>
+						<option value="부산">부산</option>
+						<option value="전라북도">전라북도</option>
+						<option value="전라남도">전라남도</option>
+						<option value="광주">광주</option>
+						<option value="제주도">제주도</option>
+					</select>
+					<select name="sigungu1" id="sigungu1">
+						<option value="sigundo">시/군/구</option>
+					</select>
 				<button type="submit" class="btn btn-primary">검색</button>
-			</div>
-		</form>
-	</div>
-	<div id="Toggle2"  style="display:none; text-align:center">
-		<form id="search" action="${path }/searchTema" method="get">
-			<div class="travel1">
-				<select name="mainTema" id="mainTema" onchange="changeT(this)">
-					<option value="tematitle1">테마 선택</option>
-					<option value="자연">자연</option>
-					<option value="인문(문화/예술/역사)">인문(문화/예술/역사)</option>
-					<option value="추천코스">추천코스</option>
-					<option value="레포츠">레포츠</option>
-					<option value="숙박">숙박</option>
-					<option value="쇼핑">쇼핑</option>
-					<option value="음식">음식</option>
-				</select>
-				<select name="subTema1" id="subTema1">
-					<option value="subtematitle">상세테마 선택</option>
-				</select>
-				<button type="submit" class="btn btn-primary">검색</button>
-			</div>
-		</form>
-	</div>
-	<div id="Toggle3"  style="display:none; text-align:center">
-		<form action="${path }/searchArea">
-			<div class="citytravel1">
-				<select name="area" id="area" onchange="changeA(this)">
-					<option value="sigun1">시/도 선택</option>
-					<option value="서울">서울</option>
-					<option value="인천">인천</option>
-					<option value="경기도">경기도</option>
-					<option value="강원도">강원도</option>
-					<option value="충청북도">충청북도</option>
-					<option value="충청남도">충청남도</option>
-					<option value="대전">대전</option>
-					<option value="세종">세종</option>
-					<option value="경상북도">경상북도</option>
-					<option value="경상남도">경상남도</option>
-					<option value="대구">대구</option>
-					<option value="울산">울산</option>
-					<option value="부산">부산</option>
-					<option value="전라북도">전라북도</option>
-					<option value="전라남도">전라남도</option>
-					<option value="광주">광주</option>
-					<option value="제주도">제주도</option>
-				</select>
-				<select name="sigungu1" id="sigungu1">
-					<option value="sigundo">시/군/구</option>
-				</select>
-			<button type="submit" class="btn btn-primary">검색</button>
-			</div>
-		</form>
-	</div>
-	<div id="Toggle4"  style="display:none; text-align:center">
+				</div>
+			</form>
+		</div>
+		<div id="Toggle4"  style="display:none; text-align:center">
 			<div class="keyword">
 				<form action="${path }/searchKeyword">
 					<input type="text" name="keyword" size="25" placeholder="키워드 검색">
 					<button type="submit" class="btn btn-primary">검색</button>
 				</form>
 			</div>
+		</div>
 	</div>
-</div>
-<div class="container24">
+	<div class="container24">
 		<section class="test1">
         	<c:if test="${place ne null }">
         		<p style="font-size:30px; margin: 0 auto; margin-right: 50px;">검색 결과(${totalData }개)</p>
@@ -161,10 +152,11 @@
 			</c:if>
 		</section>
 	</div> 
-			<div id="pageBar"><c:out value="${pageBar }" escapeXml="false"/></div>
+	<div id="pageBar"><c:out value="${pageBar }" escapeXml="false"/></div>
 </section><!-- End About Section -->
-<script>
 
+
+<script>
 $(function (){
 	$("#btn_toggle1").click(function (){
   	$("#Toggle1").toggle();

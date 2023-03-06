@@ -72,7 +72,7 @@
 				</li>
 				<c:if test="${loginMember.userId eq null}">
 					<li><a href="${path }/loginPage">login</a></li>
-	 				<li><a href="${path }/joinForm">sign in</a></li>
+	 				<li><a href="${path }/joinPage">sign in</a></li>
 				</c:if>
 				<c:if test="${loginMember.userId ne null}">
 					<li class="dropdown"><a href="/"><span>${loginMember.userId }님</span> <i class="bi bi-chevron-down"></i></a>
