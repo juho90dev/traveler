@@ -43,9 +43,9 @@ public class MemberController {
 	private MemberService service;
 	
 	// 로그인페이지 이동
-	@RequestMapping("/loginpage")
+	@RequestMapping("/loginPage")
 	public String login() {
-		return "member/newLogin";
+		return "member/loginPage";
 	}
 	
 	//최종 회원가입 페이지

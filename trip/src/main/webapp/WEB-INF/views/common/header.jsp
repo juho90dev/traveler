@@ -71,7 +71,7 @@
 					</ul>
 				</li>
 				<c:if test="${loginMember.userId eq null}">
-					<li><a href="${path }/loginpage">login</a></li>
+					<li><a href="${path }/loginPage">login</a></li>
 	 				<li><a href="${path }/joinForm">sign in</a></li>
 				</c:if>
 				<c:if test="${loginMember.userId ne null}">

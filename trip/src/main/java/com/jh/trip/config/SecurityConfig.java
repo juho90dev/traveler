@@ -24,7 +24,7 @@ public class SecurityConfig {
 	public SecurityFilterChain authentiatePath(HttpSecurity http) throws Exception{
 		return http.csrf().disable()
 				.formLogin()
-					.loginPage("/loginpage")
+					.loginPage("/loginPage")
 					.loginProcessingUrl("/loginaction")
 					.successForwardUrl("/successlogin")
 					.usernameParameter("userId")
