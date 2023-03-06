@@ -26,7 +26,7 @@
 		</form>
 		<div class="signup">
 		<br>
-			<a href="${path }/joinForm">회원가입 </a><span class="colorS">|</span><a href="/"> HOME</a>
+			<a href="${path }/joinForm">회원가입</a><span class="colorS"> | </span><a href="/">HOME</a>
 		</div>
 	</div>
 </div>
