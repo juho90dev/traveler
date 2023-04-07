@@ -36,8 +36,8 @@
 	</div>
 	<div class="places">
 		<div class="searchPlace">
-			<form>
-				<input class="search" type="text" size="6" placeholder="검색하세요" id="value" >
+			<form action="${pageContext.request.contextPath }/planKeword" method="get">
+				<input class="search" type="text" name="keyword" size="6" placeholder="검색하세요" id="value" >
 				<button class="searchBtn" type="submit">검색</button>
 			</form>
 		</div>
