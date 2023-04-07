@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Jua&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=705b81233756fa3f99e7c61bf323dd7e&libraries=services"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
 <body>
 <section>
 	<div class="plan-header">
-		<!-- <label class="planTitle" style="font-family: 'Jua', sans-serif;">여행 제목 : </label> -->
-		<h3>여행 제목</h3>
+		<label class="planTitle" style="font-family: 'Jua', sans-serif;">여행 제목 : </label>
 		<input type="text" name="title_input" class="title_input">
 		<button class="addDay" onclick="addDay()">Day 추가</button>
 		<button class="savePlan" onclick="saveClick()">저장</button>
@@ -544,9 +548,9 @@ body {
 .planTitle {
 	left: 10px;
 	font-size: 19px;
-	width: 100px;
+	width: 50px;
 	overflow: hidden;
-	/* text-overflow: ellipsis; */
+	text-overflow: ellipsis;
 	font-family: 'Jua', sans-serif;
 }
         
@@ -662,17 +666,21 @@ label {
 	margin-top: 8px;
 	font-family: 'Jua', sans-serif;
 	text-align: center;
+	
 }
 
 .searchBtn	{
-	background-color: #B7E1F5;
+	background-color: #6571a3;
 	cursor: pointer;
 	border: none;
 	font-family: 'Jua', sans-serif;
 	font-size: 18px;
 	border-radius: 3px;
+	color:white;
 }
-
+.searchBtn:hover {
+	background-color: #003476;
+}
 
 /* 내 장소 */
 .myPlaces {
@@ -768,7 +776,8 @@ label {
 	height: 89px;
 	text-align: center;
 	margin-bottom: 10px;
-	background-color: antiquewhite;
+	background-color: #6571a3;
+/* 	background-color: rgba(148, 192, 69, 0.8); */
 }
 
 .placeImg {
@@ -795,6 +804,7 @@ label {
 	overflow:hidden;
 	white-space:nowrap;
 	text-align: left;
+	color:white
 }
 
 .infoAddr {
@@ -807,6 +817,7 @@ label {
 	overflow:hidden;
 	white-space:nowrap;
 	text-align: left;
+	color:white;
 }
 
 .infoLat {
@@ -819,6 +830,7 @@ label {
 	overflow:hidden;
 	white-space:nowrap;
 	text-align: left;
+	color:white;
 }
 
 .pAddr p {
@@ -838,10 +850,10 @@ label {
 .addBtn {
 	width: 23px;
 	height: 23px;
-	border: 2px solid skyblue;
+	border: 2px solid #6571a3;
 	border-radius: 4px;
 	background-color: white;
-	color: skyblue;
+	color: #6571a3;
 	font-size: 20px;
 	font-weight: bold;
 	cursor: pointer;
