@@ -25,7 +25,7 @@
 <section id="about" class="about">
 	<div class="container">
 		<br>
-		<a class=likeabutton href="${Path}/report">신고 글 작성</a>
+		<a class=likeabutton href="${Path}/reportWrite">신고 글 작성</a>
 		<div id="joinInfoArea">
 			<section id="memberList-container">
         		 <div id="search-container">

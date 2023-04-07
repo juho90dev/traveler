@@ -15,6 +15,13 @@ public class PlannerController {
 	@Autowired
 	private MemberService mservice;
 	
+	
+	// 플랜 페이지
+	@RequestMapping("/plan")
+	public String plan() {
+		return "plan/plan";
+	}
+	
 	@RequestMapping("/planList")
 	public String planList() {
 		

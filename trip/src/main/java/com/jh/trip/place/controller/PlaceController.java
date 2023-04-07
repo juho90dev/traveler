@@ -34,7 +34,7 @@ public class PlaceController {
 	
 	// 장소 검색 페이지
 	@RequestMapping("/placeList")
-	public String plate() {
+	public String place() {
 		return "place/placeList";
 	}
 

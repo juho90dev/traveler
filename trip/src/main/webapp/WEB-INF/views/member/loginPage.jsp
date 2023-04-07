@@ -17,7 +17,7 @@
 			<div class="field space">
 				<span class="fa fa-lock"></span>
 				<input type="password" required name="password" class="pass-key" required placeholder="비밀번호를 입력하세요">
-				<span class="show">SHOW</span>
+				<b class="show">SHOW</b>
 			</div>
 			<br>
 			<div class="field">
@@ -26,7 +26,7 @@
 		</form>
 		<div class="signup">
 		<br>
-			<a href="${path }/joinForm">회원가입</a><span class="colorS"> | </span><a href="/">HOME</a>
+			<a href="${path }/joinPage">회원가입</a><span class="colorS"> | </span><a href="/">HOME</a>
 		</div>
 	</div>
 </div>
@@ -43,7 +43,7 @@ showBtn.addEventListener('click', function(){
 	}else{
 		pass_field.type = "password";
 		showBtn.textContent = "SHOW";
-		showBtn.style.color = "#222";
+		showBtn.style.color = "#3498db";
 	}
 });
 </script>

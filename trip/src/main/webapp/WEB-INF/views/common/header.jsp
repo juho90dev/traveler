@@ -66,7 +66,7 @@
 						<li><a href="${path}/notice">공지사항</a></li>
 						<li><a href="${path}/inquiryList" onclick="openInquiry()">문의사항</a></li>
 						<li><a href="${path}/boardList" onclick="openBoard()">자유게시판</a></li>
-						<li><a href="${path}/report" onclick="openReport()">신고게시판</a></li>
+						<li><a href="${path}/reportList" onclick="openReport()">신고게시판</a></li>
 						<li><a href="${path}/faq">자주 묻는 질문</a></li>
 					</ul>
 				</li>
@@ -98,35 +98,35 @@ const openPlanner=()=>{
 	<%if(login!=null) {%>
 		location.href=("<%=request.getContextPath()%>/plannerMember");
 	<%}else {%>
-		alert("회원전용메뉴입니다. 로그인 후 사용해주세요!");    
+		alert("회원전용메뉴입니다. 로그인 후 이용해주세요!");    
     <%}%>
  }
 const openPlan=()=>{
 	<%if(login!=null) {%>
 		location.href=("<%=request.getContextPath()%>/plan");
 	<%}else {%>
-		alert("회원전용메뉴입니다. 로그인 후 사용해주세요!");    
+		alert("회원전용메뉴입니다. 로그인 후 이용해주세요!");    
     <%}%>
  }
 const openInquiry=()=>{
 	<%if(login!=null) {%>
 		location.href=("<%=request.getContextPath()%>/inquiryList");
 	<%}else {%>
-		alert("회원전용메뉴입니다. 로그인 후 사용해주세요!");    
+		alert("회원전용메뉴입니다. 로그인 후 이용해주세요!");    
     <%}%>
  }
 const openBoard=()=>{
 	<%if(login!=null) {%>
 		location.href=("<%=request.getContextPath()%>/boardList");
 	<%}else {%>
-		alert("회원전용메뉴입니다. 로그인 후 사용해주세요!");    
+		alert("회원전용메뉴입니다. 로그인 후 이용해주세요!");    
     <%}%>
  }
 const openReport=()=>{
 	<%if(login!=null) {%>
 		location.href=("<%=request.getContextPath()%>/report");
 	<%}else {%>
-		alert("회원전용메뉴입니다. 로그인 후 사용해주세요!");    
+		alert("회원전용메뉴입니다. 로그인 후 이용해주세요!");    
     <%}%>
  }
 </script>
