@@ -39,6 +39,7 @@
   <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=705b81233756fa3f99e7c61bf323dd7e&libraries=services"></script>
+<link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Jua&display=swap" rel="stylesheet">
   <!-- =======================================================
   * Template Name: Serenity - v4.9.0
   * Template URL: https://bootstrapmade.com/serenity-bootstrap-corporate-template/
