@@ -116,18 +116,18 @@
 			</div> -->
 			<c:if test="${place ne null }">
 			<c:forEach items="${place}" var="p">
-				<div class="infoBox">
+				<div class="infoBox" id="infoBox">
 					<div>
 						<c:if test="${p.firstImage ne null }" >
-							<img src="${p.firstImage }" class="placeImg">
+							<img src="${p.firstImage }" class="placeImg" id="placeImg">
 						</c:if>
 						<c:if test="${p.firstImage eq null }">
-							<img src="${path }/resources/img/basicImg.png" class="placeImg">
+							<img src="${path }/resources/img/basicImg.png" class="placeImg" id="placeImg">
 						</c:if>
 					</div>
 					<div class="infoPlace">
-						<div class="infoTitle">${p.title}</div>
-						<div class="infoAddr">${p.address}</div>
+						<div class="infoTitle" id="infoTitle">${p.title}</div>
+						<div class="infoAddr" id="infoAddr">${p.address}</div>
 					</div>
 					<div class="infoAdd">
 						<c:if test="${p.firstImage ne null }" >
@@ -136,8 +136,9 @@
 						<c:if test="${p.firstImage eq null }">
 							<button onclick="addBtn1('${p.title}','${p.address}','${path }/resources/img/basicImg.png');" class="addBtn">+</button>
 						</c:if>
-						<%-- <button onclick="addBtn1('${p.title}','${p.address}','${p.firstImage}');" class="addBtn">+</button> --%>
 					</div>
+					<div style="display:none;" id="hiddenLat">${p.mapy}</div>
+					<div style="display:none;" id="hiddenLng">${p.mapx}</div>
 				</div>
 			</c:forEach>
 			</c:if>
