@@ -130,7 +130,7 @@ public class PlaceController {
 		return mv;
 	}
 	
-	
+	// 키워드 검색
 	@RequestMapping("/searchKeyword")
 	public ModelAndView searchKeyword(ModelAndView mv, @RequestParam(defaultValue="1") int cPage,
 			@RequestParam(defaultValue="12") int numPerpage,@RequestParam("keyword") String keyword) {

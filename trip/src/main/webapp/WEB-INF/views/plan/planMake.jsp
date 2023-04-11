@@ -48,7 +48,8 @@
 			</form>
 		</div>
 		<div class="placeBox">
-			<div class="infoBox">
+		
+			<!-- <div class="infoBox">
 				<div>
 					<img src="https://storage.doopedia.co.kr/upload/_upload/image5/travel/editor/2020/10/24/20201024150752312_thumb.jpg" class="placeImg">
 				</div>
@@ -112,7 +113,35 @@
 				<div class="infoAdd">
 					<button onclick="addBtn1('명동성당','서울특별시 중구 명동길 74','http://www.bizhankook.com/upload/bk/article/202112/thumb/23046-55060-sample.jpg');" class="addBtn">+</button>
 				</div>
-			</div>
+			</div> -->
+			<c:if test="${place ne null }">
+			<c:forEach items="${place}" var="p">
+				<div class="infoBox">
+					<div>
+						<c:if test="${p.firstImage ne null }" >
+							<img src="${p.firstImage }" class="placeImg">
+						</c:if>
+						<c:if test="${p.firstImage eq null }">
+							<img src="${path }/resources/img/basicImg.png" class="placeImg">
+						</c:if>
+					</div>
+					<div class="infoPlace">
+						<div class="infoTitle">${p.title}</div>
+						<div class="infoAddr">${p.address}</div>
+					</div>
+					<div class="infoAdd">
+						<c:if test="${p.firstImage ne null }" >
+							<button onclick="addBtn1('${p.title}','${p.address}','${p.firstImage}');" class="addBtn">+</button>
+						</c:if>
+						<c:if test="${p.firstImage eq null }">
+							<button onclick="addBtn1('${p.title}','${p.address}','${path }/resources/img/basicImg.png');" class="addBtn">+</button>
+						</c:if>
+						<%-- <button onclick="addBtn1('${p.title}','${p.address}','${p.firstImage}');" class="addBtn">+</button> --%>
+					</div>
+				</div>
+			</c:forEach>
+			</c:if>
+			<div id="pageBar"><c:out value="${pageBar }" escapeXml="false"/></div>
 		</div>
 	</div>
 	<div id="map" style="width:1000px;height:698px;"></div>

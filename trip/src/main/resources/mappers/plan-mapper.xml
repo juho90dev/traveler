@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="plan">
+	<resultMap id="placeMap" type="place">
+		<id column="content_Id" property="contentId"/>
+		<result column="address" property="address"/>
+		<result column="area" property="area"/>
+		<result column="sigungu" property="sigungu"/>
+		<result column="main_Tema" property="mainTema"/>
+		<result column="sub_Tema" property="subTema"/>
+		<result column="contenttype_Id" property="contenttypeId"/>
+		<result column="first_Image" property="firstImage"/>
+		<result column="mapx" property="mapx"/>
+		<result column="mapy" property="mapy"/>
+		<result column="title" property="title"/>
+		<result column="tel" property="tel"/>
+		<result column="overview" property="overview"/>
+	</resultMap>
+	
+	<!-- 키워드 검색  -->
+	<select id="searchKeyword" resultMap="placeMap">
+		SELECT * FROM PLACE WHERE 
+			TITLE LIKE '%'||#{keyword}||'%'
+			OR AREA LIKE '%'||#{keyword}||'%'
+			OR SIGUNGU LIKE '%'||#{keyword}||'%'
+			OR MAIN_TEMA LIKE '%'||#{keyword}||'%'
+			OR SUB_TEMA LIKE '%'||#{keyword}||'%'
+	</select>
+	
+	<select id="searchKeywordCount" resultType="_int">
+		SELECT COUNT(*) FROM PLACE WHERE 
+			TITLE LIKE '%'||#{keyword}||'%'
+			OR AREA LIKE '%'||#{keyword}||'%'
+			OR SIGUNGU LIKE '%'||#{keyword}||'%'
+			OR MAIN_TEMA LIKE '%'||#{keyword}||'%'
+			OR SUB_TEMA LIKE '%'||#{keyword}||'%'
+	</select>
+</mapper>
