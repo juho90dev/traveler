@@ -4,6 +4,8 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/memberList.css"/>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=705b81233756fa3f99e7c61bf323dd7e&libraries=services"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Jua&display=swap" rel="stylesheet">
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 

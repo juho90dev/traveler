@@ -1,21 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Jua&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=705b81233756fa3f99e7c61bf323dd7e&libraries=services"></script>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<section>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/memberList.css"/>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=705b81233756fa3f99e7c61bf323dd7e&libraries=services"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Jua&display=swap" rel="stylesheet">
+<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<!-- <section>
 	<div class="plan-header">
 		<label class="planTitle" style="font-family: 'Jua', sans-serif;">여행 제목 : </label>
 		<input type="text" name="title_input" class="title_input">
 		<button class="addDay" onclick="addDay()">Day 추가</button>
 		<button class="savePlan" onclick="saveClick()">저장</button>
-		<!-- <button class="plan-header_button-close">닫기</button> -->
+		<button class="plan-header_button-close">닫기</button>
+		<button class="closePlan"  onClick = " if (confirm ('작성 취소하겠습니까?')) history.back(); ">닫기</button>
+		
+	</div>
+</section> -->
+<section id="breadcrumbs" class="breadcrumbs">
+	<div class="plan-header">
+
+		<button class="addDay" onclick="addDay()">Day 추가</button>
+		<button class="savePlan" onclick="saveClick()">저장</button>
 		<button class="closePlan"  onClick = " if (confirm ('작성 취소하겠습니까?')) history.back(); ">닫기</button>
 		
 	</div>
@@ -109,7 +116,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="map" style="width:660px;height:698px;"></div>
+	<div id="map" style="width:1000px;height:698px;"></div>
 </section>
 
 	<div class="fDiv">
@@ -132,7 +139,7 @@ var mapContainer = document.getElementById('map'),
 	mapOption = {
 		// 지도의 중심좌표
 		center: new kakao.maps.LatLng(37.5725, 126.975556),
-		level: 5 // 지도의 확대 레벨
+		level: 6 // 지도의 확대 레벨
 	};
 	
 // 지도를 생성
@@ -167,32 +174,37 @@ var positions = [
         title: '경복궁', 
         latlng: new kakao.maps.LatLng(37.578611, 126.977222),
     	place : '37.578611, 126.977222',
-    	addr : '서울특별시 종로구 사직로 161'
+    	addr : '서울특별시 종로구 사직로 161',
+    	image : 'https://storage.doopedia.co.kr/upload/_upload/image5/travel/editor/2020/10/24/20201024150752312_thumb.jpg'
     },
     {
         title: '세종문화회관', 
         latlng: new kakao.maps.LatLng(37.5725, 126.975556),
     	place : '37.5725, 126.975556',
-    	addr : '서울특별시 종로구 세종대로 175'
+    	addr : '서울특별시 종로구 세종대로 175',
+    	image : 'https://mediahub.seoul.go.kr/wp-content/uploads/2018/04/22c5a3d1813fa21f59ba17bc17b8e934.jpg'
     },
     {
         title: '대한민국역사박물관', 
         latlng: new kakao.maps.LatLng(37.573834, 126.97811),
     	place : '37.573834, 126.97811',
-    	addr : '서울특별시 종로구 세종대로 198'
+    	addr : '서울특별시 종로구 세종대로 198',
+    	image : 'https://www.much.go.kr/cmm/fms/getOrgImage.do?atchFileId=FILE_000000000014528&fileSn=0'
     },
     {
         title: '보신각',
         latlng: new kakao.maps.LatLng(37.56982,126.98352),
     	place : '37.56982,126.98352',
-    	addr : '서울특별시 종로구 종로 54'
+    	addr : '서울특별시 종로구 종로 54',
+    	image : 'http://newsimg.hankookilbo.com/2014/11/11/201411111983372861_1.jpg'
     },
 
     {
         title: '명동성당',
         latlng: new kakao.maps.LatLng(37.564167, 126.987306),
     	place : '37.564167, 126.987306',
-    	addr : '서울특별시 중구 명동길 74'
+    	addr : '서울특별시 중구 명동길 74',
+    	image : 'http://www.bizhankook.com/upload/bk/article/202112/thumb/23046-55060-sample.jpg'
     }
 ];
 
@@ -212,19 +224,61 @@ for (var i = 0; i < positions.length; i ++) {
 	var marker = new kakao.maps.Marker({
 		map: map, // 마커를 표시할 지도
 		position: positions[i].latlng, // 마커를 표시할 위치
-		title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-		image : markerImage // 마커 이미지
+		//title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+		image : markerImage, // 마커 이미지
+		//content : content
 	});
-	
+	var content="";
 	// 인포윈도우로 장소에 대한 설명을 표시합니다
-	var infowindow = new kakao.maps.InfoWindow({
+/* var infowindow = new kakao.maps.InfoWindow({
 		//content: '<div style="width:150px;text-align:center;padding:6px 0;">'+positions[i].title+'</div>'
-		content: '<div style="padding:5px; width:100px">'+positions[i].title+ '<br><a href="https://map.kakao.com/link/to/'+positions[i].title+','+positions[i].place+'/"'+' style="color:blue" target="_blank">길찾기</a></div>'
-	});
-	infowindow.open(map, marker);
+		//content: '<div style="padding:5px; width:100px; height:100px;">'+positions[i].title+ '<br><a href="https://map.kakao.com/link/to/'+positions[i].title+','+positions[i].place+'/"'+' style="color:blue" target="_blank">길찾기</a></div>'
+		content : '<div class="wrap">' + 
+		'<div class="info">' + 
+		'<div class="title">' + 
+			positions[i].title + 
+		'</div>' + 
+		'<div class="body">' + 
+			'<div class="img">' +
+				'<img src="'+ positions[i].image+'" width="73" height="70">' +
+			'</div>' + 
+			'<div class="desc">' + 
+				'<div class="ellipsis">'+positions[i].addr+'</div>' + 
+				'<div><a href="https://map.kakao.com/link/to/'+positions[i].title+','+positions[i].place+'/"" target="_blank" class="link">길찾기</a></div>' + 
+			'</div>' + 
+		'</div>' + 
+	'</div>' +    
+	'</div>'
+        		
+	}); */
+	//infowindow.open(map, marker);
+var content = '<div class="wrap">' + 
+	'<div class="info">' + 
+	'<div class="title">' + 
+		positions[i].title + 
+	'</div>' + 
+	'<div class="body">' + 
+		'<div class="img">' +
+			'<img src="'+ positions[i].image+'" width="73" height="70">' +
+		'</div>' + 
+		'<div class="desc">' + 
+			'<div class="ellipsis">'+positions[i].addr+'</div>' + 
+			'<div><a href="https://map.kakao.com/link/to/'+positions[i].title+','+positions[i].place+'/"" target="_blank" class="link">길찾기</a></div>' + 
+		'</div>' + 
+	'</div>' + 
+'</div>' +    
+'</div>';
+var overlay = new kakao.maps.CustomOverlay({
+    content: content,
+    map: map,
+    position: positions[i].latlng       
+});
+kakao.maps.event.addListener(marker, 'click', function() {
+    overlay.setMap(map);
+});
 }
 
-// 마커 선 잇기
+/* // 마커 선 잇기
 var linePath;
 var lineLine = new daum.maps.Polyline();
 var distance;
@@ -245,7 +299,7 @@ for (var i = 0; i < positions.length; i++) {
 		strokeOpacity : 1, // 선의 불투명도입니다
 		strokeStyle : 'solid' // 선의 스타일
 	});
-}
+} */
 	
 // 마커가 지도 위에 표시되도록 설정
 marker.setMap(map);
@@ -628,7 +682,7 @@ label {
         
 .day {
 	text-align: center;
-	width: 150px;
+	width: 152px;
 	height: 698px;
 	margin-left: 20px;
 	margin-bottom: 0%;
@@ -685,7 +739,7 @@ label {
 /* 내 장소 */
 .myPlaces {
 	text-align: center;
-	width: 268px;
+	width: 270px;
 	height: 698px;
 	margin-bottom: 0%;
 	border: 1px solid black;
@@ -755,7 +809,7 @@ label {
 
 /* 검색 장소 */
 .places {
-	width: 268px;
+	width: 270px;
 	height: 698px;
 	background-color: white;
 	border: 1px solid black;
@@ -936,6 +990,111 @@ label {
 	font-family: 'Jua', sans-serif;
 	margin: 10px;
 }
+
+
+.wrap {
+	position: absolute;
+	left:0;
+	bottom: 40px;
+	width: 288px;
+	height: 132px;
+	margin-left: -144px;
+	text-align: left;
+	overflow: hidden;
+	font-size: 12px;
+	line-height: 1.5;
+}
+    
+.wrap * {
+	padding: 0;
+	margin: 0;
+}
+
+.wrap .info {
+	width: 286px;
+	height: 120px;
+	border-radius: 5px;
+	border-bottom: 2px solid #ccc;
+	border-right: 1px solid #ccc;
+	overflow: hidden;
+	background: #fff;
+}
+
+/* .wrap .info:nth-child(1) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+} */
+
+.info .title {
+	padding: 5px 0 0 10px;
+	height: 30px;
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.info .close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #888;
+	width: 17px;
+	height: 17px;
+	background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+}
+
+.info .close:hover {
+	cursor: pointer;
+}
+
+.info .body {
+	position: relative;
+	overflow: hidden;
+}
+
+.info .desc {
+	position: relative;
+	margin: 13px 0 0 90px;
+	height: 75px;
+}
+
+.desc .ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.desc .jibun {
+	font-size: 11px;
+	color: #888;
+	margin-top: -2px;
+}
+
+.info .img {
+	position: absolute;
+	top: 6px;
+	left: 5px;
+	width: 73px;
+	height: 71px;
+	border: 1px solid #ddd;
+	color: #888;
+	overflow: hidden;
+}
+
+.info:after {
+	content: '';
+	position: absolute;
+	margin-left: -12px;
+	left: 50%;
+	bottom: 0;
+	width: 22px;
+	height: 12px;
+	background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+.info .link {
+	color: #5085BB;
+}
 </Style>
-</body>
-</html>
+ <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
