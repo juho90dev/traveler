@@ -20,7 +20,6 @@
 </section> -->
 <section id="breadcrumbs" class="breadcrumbs">
 	<div class="plan-header">
-
 		<button class="addDay" onclick="addDay()">Day 추가</button>
 		<button class="savePlan" onclick="saveClick()">저장</button>
 		<button class="closePlan"  onClick = " if (confirm ('작성 취소하겠습니까?')) history.back(); ">닫기</button>
@@ -252,7 +251,7 @@ for (var i = 0; i < positions.length; i ++) {
         		
 	}); */
 	//infowindow.open(map, marker);
-var content = '<div class="wrap">' + 
+content = '<div class="wrap">' + 
 	'<div class="info">' + 
 	'<div class="title">' + 
 		positions[i].title + 
@@ -1032,6 +1031,7 @@ label {
 	border-bottom: 1px solid #ddd;
 	font-size: 18px;
 	font-weight: bold;
+	font-family: 'Jua', sans-serif;
 }
 
 .info .close {
