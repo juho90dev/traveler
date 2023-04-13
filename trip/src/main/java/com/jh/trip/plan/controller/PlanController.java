@@ -46,4 +46,10 @@ public class PlanController {
 		System.out.println(totalData);
 		return mv;
 	}
+	
+	// 테스트 페이지
+	@RequestMapping("/planMakeTest")
+	public String planMakeTest() {
+		return "plan/planMakeTest";
+	}
 }

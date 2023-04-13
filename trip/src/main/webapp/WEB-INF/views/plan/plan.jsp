@@ -28,6 +28,7 @@
 			<button id="btn_toggle4" class="btn btn-primary">키워드 검색</button>
 			<button id="btn_toggle1" class="btn btn-primary">통합 검색</button>
 			<a class="btn btn-primary" href="<%=request.getContextPath()%>/planMake">플랜 작성</a>
+			<a class="btn btn-primary" href="<%=request.getContextPath()%>/planMakeTest">플랜작성테스트</a>
 		</div>
 		<br>
 		<div>
