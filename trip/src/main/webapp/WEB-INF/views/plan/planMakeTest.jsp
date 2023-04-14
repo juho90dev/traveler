@@ -26,7 +26,7 @@
 		</div>
 		<div class="placeBox" id="placeBox"></div>
 	</div>
-	<div id="map" style="width:600px;height:698px;"></div>
+	<div id="map" style="width:1100px;height:698px;"></div>
 	<div class="places">
 		<div class="searchPlace">
 			<form action="${pageContext.request.contextPath }/planKeword" method="get">
@@ -42,10 +42,10 @@
 				<div class="infoPlace">
 					<div class="infoTitle">경복궁</div>
 					<div class="infoAddr">서울특별시 종로구 사직로 161</div>
-					<div class="infoLat" style="display:none;">37.578611, 126.977222</div>
+					<div class="latlng" style="display:none;">37.578611, 126.977222</div>
 				</div>
 				<div class="infoAdd">
-					<button onclick="addBtn1('경복궁','서울특별시 종로구 사직로 161','https://storage.doopedia.co.kr/upload/_upload/image5/travel/editor/2020/10/24/20201024150752312_thumb.jpg');" class="addBtn">+</button>
+					<button onclick="addBtn1('경복궁','서울특별시 종로구 사직로 161','https://storage.doopedia.co.kr/upload/_upload/image5/travel/editor/2020/10/24/20201024150752312_thumb.jpg','37.578611, 126.977222');" class="addBtn">+</button>
 				</div>
 			</div>
 			<div class="infoBox">
@@ -55,10 +55,10 @@
 				<div class="infoPlace">
 					<div class="infoTitle">세종문화회관</div>
 					<div class="infoAddr">서울특별시 종로구 세종대로 175</div>
-					<div class="infoAddr" style="display:none;">37.5725, 126.975556</div>
+					<div class="latlng" style="display:none;">37.5725, 126.975556</div>
 				</div>
 				<div class="infoAdd">
-					<button onclick="addBtn1('세종문화회관','서울특별시 종로구 세종대로 175','https://mediahub.seoul.go.kr/wp-content/uploads/2018/04/22c5a3d1813fa21f59ba17bc17b8e934.jpg');" class="addBtn">+</button>
+					<button onclick="addBtn1('세종문화회관','서울특별시 종로구 세종대로 175','https://mediahub.seoul.go.kr/wp-content/uploads/2018/04/22c5a3d1813fa21f59ba17bc17b8e934.jpg','37.5725, 126.975556');" class="addBtn">+</button>
 				</div>
 			</div>
 			<div class="infoBox">
@@ -68,10 +68,10 @@
 				<div class="infoPlace">
 					<div class="infoTitle">대한민국역사박물관</div>
 					<div class="infoAddr">서울특별시 종로구 세종대로 198</div>
-					<div class="infoAddr" style="display:none;">37.573834, 126.97811</div>
+					<div class="latlng" style="display:none;">37.573834, 126.97811</div>
 				</div>
 				<div class="infoAdd">
-					<button onclick="addBtn1('대한민국역사박물관','서울특별시 종로구 세종대로 198','https://www.much.go.kr/cmm/fms/getOrgImage.do?atchFileId=FILE_000000000014528&fileSn=0');" class="addBtn">+</button>
+					<button onclick="addBtn1('대한민국역사박물관','서울특별시 종로구 세종대로 198','https://www.much.go.kr/cmm/fms/getOrgImage.do?atchFileId=FILE_000000000014528&fileSn=0','37.573834, 126.97811');" class="addBtn">+</button>
 				</div>
 			</div>
 			<div class="infoBox">
@@ -81,10 +81,10 @@
 				<div class="infoPlace">
 					<div class="infoTitle">보신각</div>
 					<div class="infoAddr">서울특별시 종로구 종로 54</div>
-					<div class="infoAddr" style="display:none;">37.56982,126.98352</div>
+					<div class="latlng" style="display:none;">37.56982,126.98352</div>
 				</div>
 				<div class="infoAdd">
-					<button onclick="addBtn1('보신각','서울특별시 종로구 종로 54','http://newsimg.hankookilbo.com/2014/11/11/201411111983372861_1.jpg');" class="addBtn">+</button>
+					<button onclick="addBtn1('보신각','서울특별시 종로구 종로 54','http://newsimg.hankookilbo.com/2014/11/11/201411111983372861_1.jpg','37.56982,126.98352');" class="addBtn">+</button>
 				</div>
 			</div>
 			<div class="infoBox">
@@ -94,12 +94,42 @@
 				<div class="infoPlace">
 					<div class="infoTitle">명동성당</div>
 					<div class="infoAddr">서울특별시 중구 명동길 74</div>
-					<div class="infoAddr" style="display:none;">37.564167, 126.987306</div>
+					<div class="latlng" style="display:none;">37.564167, 126.987306</div>
 				</div>
 				<div class="infoAdd">
-					<button onclick="addBtn1('명동성당','서울특별시 중구 명동길 74','http://www.bizhankook.com/upload/bk/article/202112/thumb/23046-55060-sample.jpg');" class="addBtn">+</button>
+					<button onclick="addBtn1('명동성당','서울특별시 중구 명동길 74','http://www.bizhankook.com/upload/bk/article/202112/thumb/23046-55060-sample.jpg','37.564167, 126.987306');" class="addBtn">+</button>
 				</div>
 			</div>
+<%-- 			<c:if test="${place ne null }">
+				<c:forEach items="${place}" var="p">
+					<div class="infoBox" id="infoBox">
+						<div>
+							<c:if test="${p.firstImage ne null }" >
+								<img src="${p.firstImage }" class="placeImg" id="placeImg">
+							</c:if>
+							<c:if test="${p.firstImage eq null }">
+								<img src="${path }/resources/img/basicImg.png" class="placeImg" id="placeImg">
+							</c:if>
+						</div>
+						<div class="infoPlace">
+							<div class="infoTitle" id="infoTitle">${p.title}</div>
+							<div class="infoAddr" id="infoAddr">${p.address}</div>
+							<div class="latlng" style="display:none;">${p.mapy}, ${p.mapx}</div>
+						</div>
+						<div class="infoAdd">
+							<c:if test="${p.firstImage ne null }" >
+								<button onclick="addBtn1('${p.title}','${p.address}','${p.firstImage}');" class="addBtn">+</button>
+							</c:if>
+							<c:if test="${p.firstImage eq null }">
+								<button onclick="addBtn1('${p.title}','${p.address}','${path }/resources/img/basicImg.png');" class="addBtn">+</button>
+							</c:if>
+						</div>
+						<div style="display:none;" id="hiddenLat">${p.mapy}</div>
+						<div style="display:none;" id="hiddenLng">${p.mapx}</div>
+					</div>
+				</c:forEach>
+			</c:if>
+			<div id="pageBar"><c:out value="${pageBar }" escapeXml="false"/></div> --%>
 		</div>
 	</div>
 </section>
@@ -115,16 +145,145 @@ var mapContainer = document.getElementById('map'),
 
 // 지도를 생성   
 var map = new kakao.maps.Map(mapContainer, mapOption); 
-    
-    
-    
-const titles = document.getElementsByClassName("infoTitle");
-const addrs = document.getElementsByClassName("infoAddr");
 
-// 지도의 크기가 변할때 설정
-function reloadP() {
-	location.reload();
+mapContainer.style.width = '100%';
+mapContainer.style.height = '698px';
+
+function relayout(){
+	
+map.relayout();
 }
+
+//주소-좌표 변환 객체를 생성
+var geocoder = new kakao.maps.services.Geocoder();
+var infoAddr = document.getElementsByClassName("infoAddr");
+var infoTitle = document.getElementsByClassName("infoTitle");
+var placeImg = document.getElementsByClassName("placeImg");
+var latlng = document.getElementsByClassName("latlng");
+
+var myAddr = document.getElementsByClassName("myAddr");
+var myTitle = document.getElementsByClassName("myTitle");
+var myImg = document.getElementsByClassName("myImg");
+var latlng = document.getElementsByClassName("latlng");
+
+const data = new Array();
+
+for(var i=0;i<infoTitle.length;i++) {
+	data.push(
+		{
+			title : infoTitle[i].innerText,
+			addr : infoAddr[i].innerText,
+			image : placeImg[i].src,
+			latlng : latlng[i].innerText
+		}		
+	)
+	// console.log(data[i]);
+	const cc1 = '<div class="wrap">' + 
+				'<div class="info">' + 
+				'<div class="title">' + data[i].title + 
+				'<div class="close" onclick="closeOverlay()" title="닫기"></div></div>' + 
+				'<div class="body">' + 
+				'<div class="img">' +
+				'<img src="'+ data[i].image +
+				'" width="73" height="70"></div>'+
+				'<div class="desc"><div class="ellipsis">' + data[i].addr +
+				'</div><div class="jibun ellipsis">'+data[i].latlng +
+				'</div><div><a href="https://map.kakao.com/link/to/'+data[i].title+','+data[i].addr +'/"" target="_blank" class="link">길찾기</a></div>' +
+				'<div></div></div></div>';
+				
+	const wrap = document.createElement("div");
+	const info = document.createElement("div");
+	const title = document.createElement("div");
+	const bdiv = document.createElement("div");
+	const body = document.createElement("div");
+	const img = document.createElement("div");
+	const desc = document.createElement("div");
+	const ellipsis = document.createElement("div");
+	const jibun = document.createElement("div");
+	const sample = document.createElement("div");
+	const iii = document.createElement("img");
+	const atag = document.createElement("a");
+	
+	wrap.setAttribute("class", "wrap");
+	info.setAttribute("class", "info");
+	title.setAttribute("class", "title");
+	bdiv.setAttribute("class", "close");
+	body.setAttribute("class", "body");
+	img.setAttribute("class", "img");
+	iii.setAttribute("src", data[i].image);
+	//iii.setAttribute("id", "iii");
+	iii.setAttribute("width","73");
+	iii.setAttribute("height","70");
+	desc.setAttribute("class","desc");
+	ellipsis.setAttribute("class", "ellipsis");
+	jibun.setAttribute("class", "jibun ellipsis");
+	sample.setAttribute("class", "sample");
+	atag.setAttribute("href","	https://map.kakao.com/link/to/"+data[i].title+","+data[i].latlng);
+	atag.setAttribute("class","link");
+	atag.setAttribute("class","link");
+	atag.setAttribute("target","_black");
+	
+	atag.innerText = "길찾기";
+	title.innerText = data[i].title;
+	ellipsis.innerText = data[i].addr;
+	jibun.innerText = data[i].latlng;
+	
+	wrap.appendChild(info);
+	info.appendChild(title);
+	title.appendChild(bdiv);
+	info.appendChild(body);
+	body.appendChild(img);
+	img.appendChild(iii);
+	body.appendChild(desc);
+	desc.appendChild(ellipsis);
+	desc.appendChild(jibun);
+	desc.appendChild(sample);
+	sample.appendChild(atag);
+	// console.log(wrap);
+
+    
+
+	geocoder.addressSearch(data[i].addr, function(result, status) {
+		// 정상적으로 검색이 완료됐으면
+		if (status === kakao.maps.services.Status.OK) {
+			
+			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+			const imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+			var imageSize = new kakao.maps.Size(24, 35);
+			var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+			
+			// 결과값으로 받은 위치를 마커로 표시
+			var marker = new kakao.maps.Marker({
+				map: map,
+				position: coords,
+				image : markerImage,
+				//clickable: true
+			});
+			
+			//var iwRemoveable = true;
+			
+			// 커스텀 오버레이를 생성합니다
+			var overlay = new kakao.maps.CustomOverlay({
+				//map: map, // 맵을 설정하면 페이지가 로드되면서 커스텀오버레이가 띄어진다. 
+				position: coords,
+				// content: wrap
+				content: wrap
+			});
+			
+			// 마커에 클릭이벤트를 등록
+			kakao.maps.event.addListener(marker, 'click', function() {
+				// 마커 위에 인포윈도우를 표시
+				//infowindow.open(map, marker);
+				overlay.setMap(map);
+				console.log("생성");
+			});
+			
+			bdiv.onclick = function() { overlay.setMap(null); };
+			// 지도의 중심을 결과값으로 받은 위치로 이동
+			map.setCenter(coords);
+		}
+	});
+};
 
 // 클릭한 Day Div만 색상 변경 -> 다른 Day Div클릭하면 그 Div만 색상변경하는 함수
 var div2 = document.getElementsByClassName("eachDay");
@@ -178,7 +337,7 @@ const addDay=()=>{
 }
 
 // 장소 내 일정에 추가(일정에 추가된 장소 클릭 하면 다시 삭제기능)
-const addBtn1=(title,adr,imgs)=>{
+const addBtn1=(title,adr,imgs, latlngs)=>{
 	// const p1 = document.createElement("p");
 	// p1.innerText=adr;
 	imgDiv = document.createElement("div");
@@ -204,6 +363,11 @@ const addBtn1=(title,adr,imgs)=>{
 	myAddr.setAttribute("class", "myAddr");
 	myAddr.innerText = adr;
 	
+	const mylatlng = document.createElement("div");
+	mylatlng.setAttribute("class", "mylatlng");
+	mylatlng.setAttribute("style","display:none");
+	mylatlng.innerText = latlngs;
+	
 	// 클릭시 제거 함수 적용 -> 생성과 동시에 적용해야 한다.
 	newDiv.onclick = function(){
 		p = this.parentElement; //부모 HTML 태그요소
@@ -216,6 +380,7 @@ const addBtn1=(title,adr,imgs)=>{
 	newDiv.appendChild(myPlace);
 	myPlace.appendChild(myTitle);
 	myPlace.appendChild(myAddr);
+	myPlace.appendChild(mylatlng);
 }
 
 // Drag and Drop 적용
@@ -435,7 +600,7 @@ label {
 }
 
 .schedule {
-	width: 133px;
+	width: 124px;
 	height: 50px;
 	text-align: center;
 	margin: 0;
@@ -445,7 +610,7 @@ label {
         
 .day {
 	text-align: center;
-	width: 152px;
+	width: 240px;
 	height: 698px;
 	margin-left: 20px;
 	margin-bottom: 0%;
@@ -466,7 +631,7 @@ label {
 /* 내 장소 */
 .myPlaces {
 	text-align: center;
-	width: 270px;
+	width: 420px;
 	height: 698px;
 	margin-bottom: 0%;
 	border: 1px solid black;
@@ -475,7 +640,7 @@ label {
 }
 
 .myPlacesOne {
-	width: 250px;
+	width: 228.8px;
 	height: 50px;
 	text-align: center;
 	margin: 0;
@@ -489,7 +654,7 @@ label {
 }
 
 .myBox {
-	width: 250px;
+	width: 228.8px;
 	height: 89px;
 	text-align: center;
 	margin-bottom: 10px;
@@ -499,8 +664,9 @@ label {
 .myImg {
 	margin: 5px;
 	float: left;
-	width: 80px;
-	height: 80px;
+	width: 60px;
+	height: 60px;
+	margin-top: 15px;
 }
 
 .myPlace {
@@ -565,297 +731,297 @@ label {
 
 /* 검색 장소 */
 .places {
-	width: 262px;
-        height: 698px;
-        background-color: ivory;
-        border: 1px solid black;
-        overflow: scroll;
-        margin-right: 20px;
-        margin-left: 0px;
-    }
+	width: 440px;
+	height: 698px;
+	background-color: ivory;
+	border: 1px solid black;
+	overflow: scroll;
+	margin-right: 20px;
+	margin-left: 0px;
+}
+
+.searchPlace {
+	width: 243px;
+	height: 50px;
+	text-align: center;
+	margin-bottom: 10px;
+	background-color: antiquewhite;
+}
+
+/* infoBox */
+
+.infoBox {
+	width: 243px;
+	height: 89px;
+	text-align: center;
+	margin-bottom: 10px;
+	background-color: #6571a3;
+/* 	background-color: rgba(148, 192, 69, 0.8); */
+}
+
+.placeImg {
+	margin: 5px;
+	float: left;
+	width: 60px;
+	height: 60px;
+	margin-top: 15px;
+}
     
-    .searchPlace {
-        width: 243px;
-        height: 50px;
-        text-align: center;
-        margin-bottom: 10px;
-        background-color: antiquewhite;
-    }
+.infoPlace {
+	width: 80px;
+	height: 80px;
+	float: left;
+	margin: 5px;
+}
     
-    /* infoBox */
-    .infoBox {
-        width: 243px;
-        height: 89px;
-        text-align: center;
-        margin-bottom: 10px;
-        background-color: #6571a3;
-    /* 	background-color: rgba(148, 192, 69, 0.8); */
-    }
+.infoTitle {
+	font-size: 20px;
+	width: 120px;
+	height: 25px;
+	float: left;
+	margin: 5px;
+	text-overflow: ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+	text-align: left;
+	color:white
+}
+
+.infoAddr {
+	font-size: 13px;
+	width: 120px;
+	height: 25px;
+	float: left;
+	margin: 5px;
+	text-overflow: ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+	text-align: left;
+	color:white;
+}
+
+.infoLat {
+	font-size: 13px;
+	width: 120px;
+	height: 25px;
+	float: left;
+	margin: 5px;
+	text-overflow: ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+	text-align: left;
+}
+
+.pAddr p {
+	font-size: 22px;
+	white-space : nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden;
+}
+
+.infoAdd {
+	width: 70px;
+	height: 80px;
+	float: left;
+	margin: 5px;
+	margin-top: 10px;
+}
+.addBtn {
+	width: 23px;
+	height: 23px;
+	border: 2px solid #6571a3;
+	border-radius: 4px;
+	background-color: white;
+	color: #6571a3;
+	font-size: 19px;
+	font-weight: bold;
+	cursor: pointer;
+	padding: 0;
+	float: right;
+}
+
+/* 지도 */
+#map {
+	flex-grow: 1;
+	border: 1px solid black;
+}
+
+/* footer */
+.fDiv {
+	border: 1px solid black;
+	margin: 19px;
+	width: 1451px;
+	height: 50px;
+}
+
+.calendar {
+	right:1100px;
+}
+
+.calendar_detail_01 {
+	position:absolute;
+	left:400px;
+}
+
+.calendar_detail_02 {
+	position:absolute;
+	left:700px;
+}
+
+#sdate {
+	position:absolute;
+	width: 120px;
+	height: 35px;
+	left:500px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom : 1px solid black;
+	text-align: center;
+}
+
+#edate {
+	position:absolute;
+	width: 120px;
+	height: 35px;
+	left:800px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom : 1px solid black;
+	text-align: center;
+}
+
+.wave {
+	position:absolute;
+	width: 50px;
+	height: 50px;
+	left:635px;
+	text-align: center;
+}
+
+.resetPlan {
+	width: 85px;
+	height: 35px;
+	position: absolute;
+	right: 40px;
+	cursor: pointer;
+	background: aliceblue;
+	color: #383838;
+	border: none;
+	border-radius: 3px;
+	font-size: 20px;
+	font-family: 'Jua', sans-serif;
+	margin: 10px;
+}
+
+
+.wrap {
+	position: absolute;
+	left:0;
+	bottom: 40px;
+	width: 288px;
+	height: 132px;
+	margin-left: -144px;
+	text-align: left;
+	overflow: hidden;
+	font-size: 12px;
+	line-height: 1.5;
+}
     
-    .placeImg {
-        margin: 5px;
-        float: left;
-        width: 60px;
-        height: 60px;
-        margin-top: 15px;
-    }
-    
-    .infoPlace {
-        width: 80px;
-        height: 80px;
-        float: left;
-        margin: 5px;
-    }
-    
-    .infoTitle {
-        font-size: 20px;
-        width: 120px;
-        height: 25px;
-        float: left;
-        margin: 5px;
-        text-overflow: ellipsis;
-        overflow:hidden;
-        white-space:nowrap;
-        text-align: left;
-        color:white
-    }
-    
-    .infoAddr {
-        font-size: 13px;
-        width: 120px;
-        height: 25px;
-        float: left;
-        margin: 5px;
-        text-overflow: ellipsis;
-        overflow:hidden;
-        white-space:nowrap;
-        text-align: left;
-        color:white;
-    }
-    
-    .infoLat {
-        font-size: 13px;
-        width: 120px;
-        height: 25px;
-        float: left;
-        margin: 5px;
-        text-overflow: ellipsis;
-        overflow:hidden;
-        white-space:nowrap;
-        text-align: left;
-        color:white;
-    }
-    
-    .pAddr p {
-        font-size: 22px;
-        white-space : nowrap;
-        text-overflow: ellipsis;
-        overflow:hidden;
-    }
-    
-    .infoAdd {
-        width: 70px;
-        height: 80px;
-        float: left;
-        margin: 5px;
-        margin-top: 10px;;
-    }
-    
-    .addBtn {
-        width: 23px;
-        height: 23px;
-        border: 2px solid #6571a3;
-        border-radius: 4px;
-        background-color: white;
-        color: #6571a3;
-        font-size: 17px;
-        font-weight: bold;
-        cursor: pointer;
-        padding: 0;
-        float: right;
-    }
-    
-    /* 지도 */
-    #map {
-        flex-grow: 1;
-        border: 1px solid black;
-    }
-    
-    /* footer */
-    .fDiv {
-        border: 1px solid black;
-        margin: 19px;
-        width: 1451px;
-        height: 50px;
-    }
-    
-    .calendar {
-        right:1100px;
-    }
-    
-    .calendar_detail_01 {
-        position:absolute;
-        left:400px;
-    }
-    
-    .calendar_detail_02 {
-        position:absolute;
-        left:700px;
-    }
-    
-    #sdate {
-        position:absolute;
-        width: 120px;
-        height: 35px;
-        left:500px;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-bottom : 1px solid black;
-        text-align: center;
-    }
-    
-    #edate {
-        position:absolute;
-        width: 120px;
-        height: 35px;
-        left:800px;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-bottom : 1px solid black;
-        text-align: center;
-    }
-    
-    .wave {
-        position:absolute;
-        width: 50px;
-        height: 50px;
-        left:635px;
-        text-align: center;
-    }
-    
-    .resetPlan {
-        width: 85px;
-        height: 35px;
-        position: absolute;
-        right: 40px;
-        cursor: pointer;
-        background: aliceblue;
-        color: #383838;
-        border: none;
-        border-radius: 3px;
-        font-size: 20px;
-        font-family: 'Jua', sans-serif;
-        margin: 10px;
-    }
-    
-    
-    .wrap {
-        position: absolute;
-        left:0;
-        bottom: 40px;
-        width: 288px;
-        height: 132px;
-        margin-left: -144px;
-        text-align: left;
-        overflow: hidden;
-        font-size: 12px;
-        line-height: 1.5;
-    }
-        
-    .wrap * {
-        padding: 0;
-        margin: 0;
-    }
-    
-    .wrap .info {
-        width: 286px;
-        height: 120px;
-        border-radius: 5px;
-        border-bottom: 2px solid #ccc;
-        border-right: 1px solid #ccc;
-        overflow: hidden;
-        background: #fff;
-    }
-    
-    /* .wrap .info:nth-child(1) {
-        border: 0;
-        box-shadow: 0px 1px 2px #888;
-    } */
-    
-    .info .title {
-        padding: 5px 0 0 10px;
-        height: 30px;
-        background: #eee;
-        border-bottom: 1px solid #ddd;
-        font-size: 18px;
-        font-weight: bold;
-        font-family: 'Jua', sans-serif;
-    }
-    
-    .info .close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        color: #888;
-        width: 17px;
-        height: 17px;
-        background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
-    }
-    
-    .info .close:hover {
-        cursor: pointer;
-    }
-    
-    .info .body {
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .info .desc {
-        position: relative;
-        margin: 13px 0 0 90px;
-        height: 75px;
-    }
-    
-    .desc .ellipsis {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-    
-    .desc .jibun {
-        font-size: 11px;
-        color: #888;
-        margin-top: -2px;
-    }
-    
-    .info .img {
-        position: absolute;
-        top: 6px;
-        left: 5px;
-        width: 73px;
-        height: 71px;
-        border: 1px solid #ddd;
-        color: #888;
-        overflow: hidden;
-    }
-    
-    .info:after {
-        content: '';
-        position: absolute;
-        margin-left: -12px;
-        left: 50%;
-        bottom: 0;
-        width: 22px;
-        height: 12px;
-        background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
-    }
-    
-    .info .link {
-        color: #5085BB;
-    }
-    </Style>
+.wrap * {
+	padding: 0;
+	margin: 0;
+}
+
+.wrap .info {
+	width: 286px;
+	height: 120px;
+	border-radius: 5px;
+	border-bottom: 2px solid #ccc;
+	border-right: 1px solid #ccc;
+	overflow: hidden;
+	background: #fff;
+}
+
+/* .wrap .info:nth-child(1) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+} */
+
+.info .title {
+	padding: 5px 0 0 10px;
+	height: 30px;
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: 'Jua', sans-serif;
+}
+
+.info .close {
+	position: absolute;
+	top: 6px;
+	right: 10px;
+	color: #888;
+	width: 17px;
+	height: 17px;
+	background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+}
+
+.info .close:hover {
+	cursor: pointer;
+}
+
+.info .body {
+	position: relative;
+	overflow: hidden;
+}
+
+.info .desc {
+	position: relative;
+	margin: 13px 0 0 90px;
+	height: 75px;
+}
+
+.desc .ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.desc .jibun {
+	font-size: 11px;
+	color: #888;
+	margin-top: -2px;
+}
+
+.info .img {
+	position: absolute;
+	top: 6px;
+	left: 5px;
+	width: 73px;
+	height: 71px;
+	border: 1px solid #ddd;
+	color: #888;
+	overflow: hidden;
+}
+
+.info:after {
+	content: '';
+	position: absolute;
+	margin-left: -12px;
+	left: 50%;
+	bottom: 0;
+	width: 22px;
+	height: 12px;
+	background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+.info .link {
+	color: #5085BB;
+}
+
+</Style>
 </body>
 </html>
